@@ -83,9 +83,94 @@ class UserController {
             template:'user/userManagement/index', 
             data:[
                 'user_seo'=> $user_seo,
-                'edit_tableJs' => true,
+                'page' => 'Laboran',
+                'cat_id'=> '2',
             ],
             layout: 'layout/user/main'
         ); 
+    }
+
+    public function createUser($user_seo){
+        $name = $_POST['name'];
+        $nim = $_POST['nim'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $password = $_POST['password'];
+        $cat_id = $_POST['cat_id'];
+        $page = $_POST['page'];
+        // Validasi input kosong
+        if (!$name || !$nim || !$email || !$phone || !$password) {
+            return View::render(
+                template: 'user/userManagement/index',
+                data: [
+                    'error' => 'Please fill in all the required fields.',
+                    'user_seo'=> $user_seo,
+                    'page' => $page,
+                    'cat_id'=> $cat_id,
+                ],
+                layout: 'layout/user/main'
+            );
+        }
+
+        $invalidPassword = !preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/', $password);
+        $invalidEmail = !filter_var($email, FILTER_VALIDATE_EMAIL)?? true;
+        $nimRegistered = User::findByNim($nim);
+        $emailRegistered = User::findByEmail($email);
+        if ($nimRegistered || $emailRegistered || $invalidEmail || $invalidPassword) {
+            return View::render(
+                template:'user/userManagement/index', 
+                data:[
+                    'invalidEmail'=> $invalidEmail,
+                    'invalidPassword'=> $invalidPassword,
+                    'nimRegistered' => $nimRegistered,
+                    'emailRegistered' => $emailRegistered,
+                    'name' => $name,
+                    'nim' => $nim,
+                    'email' => $email,
+                    'phone' => $phone,
+                    'password' => $password,
+                    'user_seo'=> $user_seo,
+                    'page' => $page,
+                    'cat_id'=> $cat_id,
+                ],
+                layout: 'layout/user/main'
+            ); 
+        }
+        
+        $user = [
+            'name'=> $name,
+            'cat_id'=> $cat_id,
+            'nim'=> $nim,
+            'phone'=> $phone,
+            'email'=> $email,
+            'hash_password'=> password_hash($password, PASSWORD_DEFAULT),
+            'seo_user'=> str_replace(' ', '-', strtolower($name))  . '-' . $nim,
+        ];
+
+        $userCreated = User::create($user);
+        if ($userCreated != null) {
+            return View::render(
+                template:'user/userManagement/index', 
+                data:[
+                    'user_seo'=> $user_seo,
+                    'page' => $page,
+                    'cat_id'=> $cat_id,
+                    'success'=> 'Create user successfully.',
+                ],
+                layout: 'layout/user/main'
+            );
+        }
+        return View::render(
+            template:'user/userManagement/index', 
+            data:[
+                'user_seo'=> $user_seo,
+                'page' => $page,
+                'cat_id'=> $cat_id,
+                'error' => 'Failed to create user.'
+            ],
+            layout: 'layout/user/main'
+        );
+        
+
     }
 }
