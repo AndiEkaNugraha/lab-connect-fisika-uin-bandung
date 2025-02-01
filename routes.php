@@ -21,4 +21,4 @@ $router->add('GET', '/logout','AuthController@destroy');
 $router->add('GET', '/u/{user_seo}', 'User\UserController@dashboard', ['auth']);
 $router->add('GET', '/u/{user_seo}/profile', 'User\UserController@profile', ['auth']);
 $router->add('POST', '/u/{user_seo}/profile/update','User\UserController@profileUpdate', ['auth']);
-$router->add('GET', '/u/{user_seo}/manajemen-control/laboratory', 'User\LabolatoryController@labolatory', ['auth']);
+$router->add('GET', '/u/{user_seo}/manajemen-user/laboratory', 'User\UserController@listLaboran', ['auth']);

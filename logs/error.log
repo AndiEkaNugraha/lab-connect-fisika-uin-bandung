@@ -164,3 +164,6 @@
 [2025-01-31 17:58:17] Error: Error: Unknown named parameter $user_seo in C:\Storage\prj\LabConnect\labConnect\core\Router.php on line 131
 [2025-01-31 17:58:50] Error: ErrorException: Undefined variable $user_seo in C:\Storage\prj\LabConnect\labConnect\app\Views\user\dashboard\index.php on line 14
 [2025-02-01 03:49:27] Error: ErrorException: Creation of dynamic property App\Models\User::$is_active is deprecated in C:\Storage\prj\LabConnect\labConnect\core\Database.php on line 53
+[2025-02-01 03:55:23] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-01 03:55:27] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-01 04:09:53] Error: Exception: Method listLaboran tidak ditemukan di controller App\Controllers\User\LabolatoryController. in C:\Storage\prj\LabConnect\labConnect\core\Router.php on line 129

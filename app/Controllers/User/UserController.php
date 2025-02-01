@@ -80,7 +80,7 @@ class UserController {
     }
     public function listLaboran($user_seo){
         return View::render(
-            template:'user/labolatory/index.php', 
+            template:'user/userManagement/index', 
             data:[
                 'user_seo'=> $user_seo,
                 'edit_tableJs' => true,

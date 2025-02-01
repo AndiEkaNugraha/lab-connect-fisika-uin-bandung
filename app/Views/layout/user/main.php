@@ -166,15 +166,15 @@
           </a>
         </li>
         <?php if(check('user_manajemen')): ?>
-        <li class="header">Management Control</li>
+        <li class="header">Management User</li>
         <li class="treeview"> 
           <a href="#"> 
             <i class="fa fa-address-card-o"></i> <span>User</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> 
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?=$user->seo_user??''?>/manajemen-control/laboratory">Laboran</a></li>
-            <li><a href="<?=$user->seo_user??''?>/manajemen-control/lecturer">Dosen</a></li>
-            <li><a href="<?=$user->seo_user??''?>/manajemen-control/student">Mahasiswa</a></li>
+            <li><a href="/u/<?=$user->seo_user??''?>/manajemen-user/laboratory">Laboran</a></li>
+            <li><a href="/u/<?=$user->seo_user??''?>/manajemen-user/lecturer">Dosen</a></li>
+            <li><a href="/u/<?=$user->seo_user??''?>/manajemen-user/student">Mahasiswa</a></li>
           </ul>
         </li>
         <?php endif;?>
