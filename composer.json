@@ -1,0 +1,21 @@
+{
+    "name": "goodb/lab-connect-2",
+    "authors": [
+        {
+            "name": "Andi Eka Nugraha",
+            "email": "an.ekanugraha@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    },
+    "require": {},
+    "scripts": {
+        "schema:load": "php bin/schema_load.php",
+        "schema:fixtures": "php bin/schema_fixtures.php",
+        "run:dev": "php -S localhost:8000 -t public"
+    }
+}
