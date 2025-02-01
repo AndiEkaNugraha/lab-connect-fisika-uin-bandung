@@ -25,6 +25,8 @@ class User extends Model {
   public $linkedin;
   public $hash_password;
   public $seo_user;
+  public $is_active;
+  public $is_deleted;
   public $created_at;
   public $updated_at;
   
