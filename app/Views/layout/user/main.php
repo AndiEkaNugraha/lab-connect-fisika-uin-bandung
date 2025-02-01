@@ -186,6 +186,14 @@
             <span>Labolatorium</span> 
           </a>
         </li>
+        <li class="treeview"> <a href="#"> <i class="fa fa-thermometer-half"></i> <span>Alat & Bahan</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+          <ul class="treeview-menu">
+        </ul>
+          </li>
+          <li class="treeview"> <a href="#"> <i class="fa fa-globe"></i> <span>News</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+          <ul class="treeview-menu">
+        </ul>
+          </li>
         <?php endif;?>
       </ul>
     </div>
