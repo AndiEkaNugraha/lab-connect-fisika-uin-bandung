@@ -1,8 +1,3 @@
-<!-- DataTables -->
-<link rel="stylesheet" href="/assets/user/dist/plugins/datatables/css/dataTables.bootstrap.min.css">
-<!-- bootstrap-switch -->
-<link rel="stylesheet" href="/assets/user/dist/plugins/bootstrap-switch/bootstrap-switch.css">
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper"> 
   <!-- Content Header (Page header) -->
@@ -23,7 +18,7 @@
           </div>
           <div class="card-body">
             
-            <form method="POST" action="/u/<?= $user_seo??'' ?>/manajemen-user/create"> 
+            <form method="POST" action=""> 
             <?= csrf_token() ?>
             <div class="row">
               <div class="col-md-12">
@@ -74,7 +69,6 @@
               </div>
               <input type="text" name="cat_id" value="<?= $cat_id ?>" hidden>
               <input type="text" name="page" value="<?=$page?>" hidden>
-              <input type="hidden" name="listUser" value='<?= json_encode($listUser) ?>'>
               <div class="col-md-12">
                 <button type="submit" class="btn btn-success">Create Account</button>
                 <?php if (isset($error) && $error) : ?>
@@ -136,77 +130,10 @@
     </div>
   </div>
   <!-- /.content --> 
-  <!-- alerts -->
-  <div style="position: fixed; top: 15px; right: 15px; z-index: 9999">
-    <div id="alert-primary" class="alert alert-primary alert-dismissible fade" role="alert" style="display: none;">
-      Trying to save data
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
-        <span aria-hidden="true">&times;</span> 
-      </button>
-    </div>
-    <div id="alert-success" class="alert alert-success alert-dismissible fade" role="alert" style="display: none;">
-      Saving data was successful
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
-        <span aria-hidden="true">&times;</span> 
-      </button>
-    </div>
-    <div id="alert-danger" class="alert alert-danger alert-dismissible fade" role="alert" style="display: none;">
-      Failed to save data 
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
-        <span aria-hidden="true">&times;</span> 
-      </button>
-    </div>
-  </div>
-  <!-- end alert -->
 
 </div>
-<!-- /.content-wrapper -->
-
-<!-- DataTable --> 
-<script src="/assets/user/dist/plugins/datatables/jquery.dataTables.min.js"></script> 
-<script src="/assets/user/dist/plugins/datatables/dataTables.bootstrap.min.js"></script> 
-<script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': true,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : true
-    })
-  })
-</script>
-
-<!-- bootstrap-switch --> 
-<script src="/assets/user/dist/plugins/bootstrap-switch/bootstrap-switch.js"></script> 
-<script src="/assets/user/dist/plugins/bootstrap-switch/highlight.js"></script> 
-<script src="/assets/user/dist/plugins/bootstrap-switch/main.js"></script>
 
 <script>
-  function showAlert(type, message) {
-  const alertElement = document.getElementById(`alert-${type}`);
-  if (alertElement) {
-    alertElement.innerHTML = `
-      ${message}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    `;
-    alertElement.style.display = 'block';
-    setTimeout(() => {
-      alertElement.classList.add('show');
-    }, 10)
-    // Auto close setelah 3 detik
-    setTimeout(() => {
-      alertElement.classList.remove('show');
-      setTimeout(() => {
-        alertElement.style.display = 'none';
-      },300)
-    }, 3000);
-  }
-}
 
 // JavaScript untuk deleteUser dan toggleStatus dengan POST ke URL API
 var csrfToken = '<?= csrf_token_value() ?>';
@@ -224,7 +151,7 @@ function deleteUser(userId) {
     .then(data => {
       if (data.success) {
         showAlert('success', 'User berhasil dihapus.');
-        setTimeout(() => location.reload(), 1000); // Reload halaman setelah sukses
+        setTimeout(() => window.location.href = '<?= $_SERVER['REQUEST_URI'] ?>', 1000); // Reload halaman setelah sukses
       } else {
         showAlert('danger', 'Gagal menghapus user.');
       }
@@ -274,6 +201,4 @@ window.onload = function() {
     checkbox.checked = checkbox.getAttribute('data-previous') === '1';
   });
 };
-
-
 </script>

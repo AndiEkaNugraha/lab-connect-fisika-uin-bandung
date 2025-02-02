@@ -87,6 +87,9 @@ class UserController {
                 'page' => 'Laboran',
                 'cat_id'=> '2',
                 'listUser' => $listUser??[],
+                'datatabel' => true,
+                'switchButton'=> true,
+                'alert'=> true,
             ],
             layout: 'layout/user/main'
         ); 
@@ -98,8 +101,11 @@ class UserController {
             data:[
                 'user_seo'=> $user_seo,
                 'page' => 'Lecturer',
-                'cat_id'=> '2',
+                'cat_id'=> '3',
                 'listUser' => $listUser??[],
+                'datatabel' => true,
+                'switchButton'=> true,
+                'alert'=> true,
             ],
             layout: 'layout/user/main'
         ); 
@@ -110,8 +116,11 @@ class UserController {
             data:[
                 'user_seo'=> $user_seo,
                 'page' => 'Student',
-                'cat_id'=> '2',
+                'cat_id'=> '4',
                 'listUser' => $listUser??[],
+                'datatabel' => true,
+                'switchButton'=> true,
+                'alert'=> true,
             ],
             layout: 'layout/user/main'
         ); 
@@ -124,8 +133,8 @@ class UserController {
         $password = $_POST['password'];
         $cat_id = $_POST['cat_id'];
         $page = $_POST['page'];
-        $listUser = json_decode($_POST['listUser'], true); // Mengubah JSON menjadi array
         if (!$name || !$nim || !$email || !$phone || !$password) {
+            $listUser = User::findByCat($cat_id);
             return View::render(
                 template: 'user/userManagement/index',
                 data: [
@@ -134,6 +143,9 @@ class UserController {
                     'page' => $page,
                     'cat_id'=> $cat_id,
                     'listUser' => $listUser,
+                    'datatabel' => true,
+                    'switchButton'=> true,
+                    'alert'=> true,
                 ],
                 layout: 'layout/user/main'
             );
@@ -144,6 +156,7 @@ class UserController {
         $nimRegistered = User::findByNim($nim);
         $emailRegistered = User::findByEmail($email);
         if ($nimRegistered || $emailRegistered || $invalidEmail || $invalidPassword) {
+            $listUser = User::findByCat($cat_id);
             return View::render(
                 template:'user/userManagement/index', 
                 data:[
@@ -160,6 +173,9 @@ class UserController {
                     'page' => $page,
                     'cat_id'=> $cat_id,
                     'listUser' => $listUser,
+                    'datatabel' => true,
+                    'switchButton'=> true,
+                    'alert'=> true,
                 ],
                 layout: 'layout/user/main'
             ); 
@@ -177,6 +193,7 @@ class UserController {
 
         $userCreated = User::create($user);
         if ($userCreated != null) {
+            $listUser = User::findByCat($cat_id);
             return View::render(
                 template:'user/userManagement/index', 
                 data:[
@@ -184,11 +201,15 @@ class UserController {
                     'page' => $page,
                     'cat_id'=> $cat_id,
                     'success'=> 'Create user successfully.',
-                    'listUser' => $listUser
+                    'listUser' => $listUser,
+                    'datatabel' => true,
+                    'switchButton'=> true,
+                    'alert'=> true,
                 ],
                 layout: 'layout/user/main'
             );
         }
+        $listUser = User::findByCat($cat_id);
         return View::render(
             template:'user/userManagement/index', 
             data:[
@@ -196,7 +217,10 @@ class UserController {
                 'page' => $page,
                 'cat_id'=> $cat_id,
                 'error' => 'Failed to create user.',
-                'listUser' => $listUser
+                'listUser' => $listUser,
+                'datatabel' => true,
+                'switchButton'=> true,
+                'alert'=> true,
             ],
             layout: 'layout/user/main'
         );
