@@ -86,7 +86,32 @@ class UserController {
                 'user_seo'=> $user_seo,
                 'page' => 'Laboran',
                 'cat_id'=> '2',
-                'listUser' => $listUser,
+                'listUser' => $listUser??[],
+            ],
+            layout: 'layout/user/main'
+        ); 
+    }
+    public function listLecturer($user_seo){
+        $listUser = User::findByCat(3);
+        return View::render(
+            template:'user/userManagement/index', 
+            data:[
+                'user_seo'=> $user_seo,
+                'page' => 'Lecturer',
+                'cat_id'=> '2',
+                'listUser' => $listUser??[],
+            ],
+            layout: 'layout/user/main'
+        ); 
+    }public function listStudent($user_seo){
+        $listUser = User::findByCat(4);
+        return View::render(
+            template:'user/userManagement/index', 
+            data:[
+                'user_seo'=> $user_seo,
+                'page' => 'Student',
+                'cat_id'=> '2',
+                'listUser' => $listUser??[],
             ],
             layout: 'layout/user/main'
         ); 
@@ -180,15 +205,30 @@ class UserController {
     }
     public function deleteUser($user_seo) {
         $id = $_POST['id'];
-        
+
+        $deleteUser = User::find($id);  
+        if ($deleteUser != null) {
+            $deleteUser->is_deleted = 1;
+            $deleteUser->save();
+            $response['success'] = true;
+            return json_encode($response);
+        }
         $response['success'] = false;
-        $
-        $response['success'] = true;
-        echo json_encode($response);
+        return json_encode($response);
     }
     public function editUser($user_seo) {
-
-        $response['success'] = true;
-        echo json_encode($response);
+        $id = $_POST['id'];
+        $status = $_POST['is_active'];
+        $editUser = User::find($id);  
+        // $editUser = null; 
+        if ($editUser != null) {
+            $editUser->is_active = $_POST['is_active']??0;
+            $editUser->save();
+            $response['success'] = true;
+            $response['csrf_token'] = csrf_token_value();
+            return json_encode($response);
+        }
+        $response['success'] = false;
+        return json_encode($response);
     }
 }

@@ -59,7 +59,7 @@ class User extends Model {
       [$cat],
       static::class
     );
-    return $result ? $result : null;
+    return $result ? $result : [];
   }
 
 }

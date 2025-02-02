@@ -19,6 +19,9 @@
 <link rel="stylesheet" href="/assets/user/dist/css/et-line-font/et-line-font.css">
 <link rel="stylesheet" href="/assets/user/dist/css/themify-icons/themify-icons.css">
 
+<!-- Tabs -->
+<link href="dist/css/tabs.css" rel="stylesheet">
+
 <?php if (isset($edit_avatar)) : ?>
 <!-- dropify -->
 <link rel="stylesheet" href="/assets/user/dist/plugins/dropify/dropify.min.css">

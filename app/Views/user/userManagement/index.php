@@ -114,7 +114,15 @@
                   <td><?= $user->phone ?></td>
                   <td><?= $user->mobile ?></td>
                   <td class="text-center">
-                    <input onchange="toggleStatus('<?= $user->id ?>')" data-on-text="Active" data-off-text="Off" type="checkbox" <?= $user->is_active? '' : '' ?>  data-size="mini">
+                    <input 
+                      onchange="toggleStatus('<?= $user->id ?>', this)" 
+                      type="checkbox" 
+                      <?= $user->is_active ? 'checked' : '' ?> 
+                      data-id="<?= $user->id ?>" 
+                      data-on-text="Active" 
+                      data-off-text="Off" 
+                      data-size="mini"
+                      data-previous="<?= $user->is_active ? 1 : 0 ?>"> <!-- Tambahkan ini -->
                   </td>
                   <td class="text-center">
                     <button onclick="deleteUser('<?= $user->id ?>')" class="text-danger" style="border: none;background: none;cursor: pointer; outline: none;"><i class="fa fa-trash-o"></i></button>
@@ -128,6 +136,29 @@
     </div>
   </div>
   <!-- /.content --> 
+  <!-- alerts -->
+  <div style="position: fixed; top: 15px; right: 15px; z-index: 9999">
+    <div id="alert-primary" class="alert alert-primary alert-dismissible fade" role="alert" style="display: none;">
+      Trying to save data
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+        <span aria-hidden="true">&times;</span> 
+      </button>
+    </div>
+    <div id="alert-success" class="alert alert-success alert-dismissible fade" role="alert" style="display: none;">
+      Saving data was successful
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+        <span aria-hidden="true">&times;</span> 
+      </button>
+    </div>
+    <div id="alert-danger" class="alert alert-danger alert-dismissible fade" role="alert" style="display: none;">
+      Failed to save data 
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+        <span aria-hidden="true">&times;</span> 
+      </button>
+    </div>
+  </div>
+  <!-- end alert -->
+
 </div>
 <!-- /.content-wrapper -->
 
@@ -154,13 +185,36 @@
 <script src="/assets/user/dist/plugins/bootstrap-switch/main.js"></script>
 
 <script>
-// JavaScript untuk deleteUser dan toggleStatus dengan POST ke URL API
+  function showAlert(type, message) {
+  const alertElement = document.getElementById(`alert-${type}`);
+  if (alertElement) {
+    alertElement.innerHTML = `
+      ${message}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    `;
+    alertElement.style.display = 'block';
+    setTimeout(() => {
+      alertElement.classList.add('show');
+    }, 10)
+    // Auto close setelah 3 detik
+    setTimeout(() => {
+      alertElement.classList.remove('show');
+      setTimeout(() => {
+        alertElement.style.display = 'none';
+      },300)
+    }, 3000);
+  }
+}
 
+// JavaScript untuk deleteUser dan toggleStatus dengan POST ke URL API
+var csrfToken = '<?= csrf_token_value() ?>';
 function deleteUser(userId) {
   if (confirm('Apakah Anda yakin ingin menghapus user ini?')) {
     const formData = new FormData();
     formData.append('id', userId);
-    formData.append('_token', '<?= csrf_token_value() ?>');
+    formData.append('_token', csrfToken);
 
     fetch('/u/<?= $user->seo_user??'' ?>/manajemen-user/delete', {
       method: 'POST',
@@ -169,44 +223,57 @@ function deleteUser(userId) {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        alert('User berhasil dihapus.');
-        location.reload();
+        showAlert('success', 'User berhasil dihapus.');
+        setTimeout(() => location.reload(), 1000); // Reload halaman setelah sukses
       } else {
-        alert('Gagal menghapus user.');
+        showAlert('danger', 'Gagal menghapus user.');
       }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+      console.error('Error:', error);
+      showAlert('danger', 'Terjadi kesalahan pada server.');
+    });
   }
 }
 
-function toggleStatus(userId) {
-  const checkbox = event.target;
-  const isActive = checkbox.checked ? 1 : 0; // Kirim dalam bentuk angka
-
+function toggleStatus(userId, checkbox) {
+  const previousState = checkbox.getAttribute('data-previous'); // Simpan status sebelumnya
+  const isActive = checkbox.checked ? 1 : 0; // Status baru
   const formData = new FormData();
   formData.append('id', userId);
   formData.append('is_active', isActive);
-  formData.append('_token', '<?= csrf_token_value() ?>');
+  formData.append('_token', csrfToken);
 
-  fetch('/u/<?= $user->seo_user??'' ?>/manajemen-user/edit', {
+  showAlert('primary', 'Updating status...');
+
+  fetch('/u/<?= $user->seo_user ?? '' ?>/manajemen-user/edit', {
     method: 'POST',
     body: formData
   })
   .then(response => response.json())
   .then(data => {
+    csrfToken = data.csrf_token;
     if (data.success) {
-      alert('Status berhasil diperbarui.');
+      showAlert('success', 'Status berhasil diperbarui.');
+      checkbox.setAttribute('data-previous', isActive); // Update status sebelumnya
     } else {
-      alert('Gagal memperbarui status.');
+      showAlert('danger', 'Gagal memperbarui status.');
+      checkbox.checked = previousState === '1'; // Kembalikan ke status sebelumnya
     }
   })
-  .catch(error => console.error('Error:', error));
+  .catch(error => {
+    console.error('Error:', error);
+    showAlert('danger', 'Terjadi kesalahan pada server.');
+    checkbox.checked = previousState === '1'; // Kembalikan ke status sebelumnya saat error
+  });
 }
+
 // Pastikan checkbox tercentang sesuai status
 window.onload = function() {
   document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.checked = checkbox.getAttribute('data-on-text') === 'Active';
+    checkbox.checked = checkbox.getAttribute('data-previous') === '1';
   });
-}
+};
+
 
 </script>
