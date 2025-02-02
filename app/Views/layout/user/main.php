@@ -192,8 +192,9 @@
           </ul>
         </li>
         <?php endif;?>
-        <?php if(check('edit_labolatorium')): ?>
-        <li class="header">Fasilitas</li>
+
+        <?php if(check('edit_facility')): ?>
+        <li class="header">Facility</li>
         <li class=""> 
           <a href="/u/<?= $user->seo_user??''?>/labolatorium"> 
             <i class="fa fa-hospital-o"></i> 
@@ -206,13 +207,14 @@
             <span>Alat & Bahan</span>
           </a>
         </li>
+        <?php endif;?>
+        <li class="header">Content</li>
         <li class=""> 
           <a href="/u/<?= $user->seo_user??''?>/lab-news"> 
             <i class="fa fa-globe"></i>
             <span>News</span>
           </a>
-          </li>
-        <?php endif;?>
+        </li>
       </ul>
     </div>
     <!-- /.sidebar --> 
