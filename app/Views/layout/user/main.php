@@ -292,14 +292,14 @@
 <script> 
     $('#summernote').summernote({
           height: 300, // set editor height
-          placeholder: 'Hello default Summernote',
+          placeholder: 'Input your content here',
           minHeight: null, // set minimum height of editor
           maxHeight: null, // set maximum height of editor
           focus: false // set focus to editable area after initializing summernote
     });
     $('form').submit(function(event) {
         var bioContent = $('#summernote').summernote('code'); // Ambil isi Summernote
-        $('input[name="bio"]').val(bioContent); // Masukkan ke dalam input hidden
+        $('input[name="descLong"]').val(bioContent); // Masukkan ke dalam input hidden
     });
 </script>
 <?php endif; ?>

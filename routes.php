@@ -32,3 +32,9 @@ $router->add('POST', '/u/{user_seo}/manajemen-user/edit','User\UserController@ed
 $router->add('GET', '/u/{user_seo}/lab-equipment', 'User\EquipmentController@listEquipment', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab-news', 'User\NewsController@listNews', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab', 'User\LabController@listLab', ['auth']);
+$router->add('POST', '/u/{user_seo}/lab', 'User\LabController@deleteLab', ['auth']);
+$router->add('GET', '/u/{user_seo}/lab/create', 'User\LabController@createLab', ['auth']);
+$router->add('POST', '/u/{user_seo}/lab/create', 'User\LabController@addLab', ['auth']);
+$router->add('GET', '/u/{user_seo}/lab/edit/{lab_seo}', 'User\LabController@editLab', ['auth']);
+$router->add('POST', '/u/{user_seo}/lab/edit/{lab_seo}', 'User\LabController@updateLab', ['auth']);
+

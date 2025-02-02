@@ -37,7 +37,7 @@ class UserController {
         $mobile = $_POST['mobile'];
         $email = $_POST['email'];
         $major = $_POST['major'];
-        $bio = $_POST['bio'];
+        $bio = $_POST['descLong'];
         $address = $_POST['address'];
         $instagram = $_POST['instagram'];
         $facebook = $_POST['facebook'];
@@ -85,7 +85,7 @@ class UserController {
             template:'user/userManagement/index', 
             data:[
                 'user_seo'=> $user_seo,
-                'page' => 'Labolatory',
+                'page' => 'Lab Technician',
                 'cat_id'=> '2',
                 'listUser' => $listUser??[],
                 'datatabel' => true,

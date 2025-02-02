@@ -180,3 +180,35 @@
 [2025-02-02 15:50:46] Error: RuntimeException: Error: Template file not found: C:\Users\fazah\Documents\Andi\lab\lab-connect-fisika-uin-bandung/app/Views/user/News/index.php.php in C:\Users\fazah\Documents\Andi\lab\lab-connect-fisika-uin-bandung\core\View.php on line 32
 [2025-02-02 15:52:34] Error: RuntimeException: Error: Template file not found: C:\Users\fazah\Documents\Andi\lab\lab-connect-fisika-uin-bandung/app/Views/user/Lab/index.php.php in C:\Users\fazah\Documents\Andi\lab\lab-connect-fisika-uin-bandung\core\View.php on line 32
 [2025-02-02 15:53:11] Error: RuntimeException: Error: Template file not found: C:\Users\fazah\Documents\Andi\lab\lab-connect-fisika-uin-bandung/app/Views/user/Lab/index.php in C:\Users\fazah\Documents\Andi\lab\lab-connect-fisika-uin-bandung\core\View.php on line 32
+[2025-02-02 18:03:58] Error: ErrorException: Undefined variable $page in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\listLab\index.php on line 5
+[2025-02-02 18:04:18] Error: ErrorException: Undefined variable $listUser in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\listLab\index.php on line 28
+[2025-02-02 18:46:38] Error: ErrorException: Undefined array key "bio" in C:\Storage\prj\LabConnect\labConnect\app\Controllers\User\UserController.php on line 40
+[2025-02-02 18:47:26] Error: ErrorException: Undefined array key "descLong" in C:\Storage\prj\LabConnect\labConnect\app\Controllers\User\UserController.php on line 40
+[2025-02-02 19:18:38] Error: ErrorException: Undefined variable $status in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 45
+[2025-02-02 19:18:40] Error: ErrorException: Undefined variable $status in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 45
+[2025-02-02 19:31:57] Error: TypeError: Core\Database::fetchAll(): Argument #2 ($params) must be of type array, string given, called in C:\Storage\prj\LabConnect\labConnect\app\Models\Lab.php on line 25 in C:\Storage\prj\LabConnect\labConnect\core\Database.php on line 41
+[2025-02-02 19:35:11] Error: ErrorException: Undefined property: App\Models\Lab::$name in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\listLab\index.php on line 32
+[2025-02-02 19:35:14] Error: ErrorException: Undefined property: App\Models\Lab::$name in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\listLab\index.php on line 32
+[2025-02-02 19:58:39] Error: ErrorException: Undefined variable $name in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 19
+[2025-02-02 19:59:21] Error: ErrorException: Undefined variable $name in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 19
+[2025-02-02 19:59:24] Error: ErrorException: Undefined variable $name in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 19
+[2025-02-02 20:01:24] Error: ErrorException: Undefined variable $name in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 19
+[2025-02-02 20:01:31] Error: ErrorException: Undefined variable $name in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 19
+[2025-02-02 20:01:32] Error: ErrorException: Undefined variable $name in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 19
+[2025-02-02 20:01:33] Error: ErrorException: Undefined variable $name in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 19
+[2025-02-02 20:29:31] Error: Error: Unknown named parameter $lab_seo in C:\Storage\prj\LabConnect\labConnect\core\Router.php on line 131
+[2025-02-02 20:33:54] Error: ParseError: syntax error, unexpected token ";" in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 28
+[2025-02-02 20:36:12] Error: ErrorException: Undefined variable $lab in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 28
+[2025-02-02 20:36:17] Error: ErrorException: Undefined variable $lab in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 28
+[2025-02-02 20:36:20] Error: ErrorException: Undefined variable $lab in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 28
+[2025-02-02 20:59:08] Error: Error: Unknown named parameter $lab_seo in C:\Storage\prj\LabConnect\labConnect\core\Router.php on line 131
+[2025-02-02 21:00:47] Error: Error: Unknown named parameter $lab_seo in C:\Storage\prj\LabConnect\labConnect\core\Router.php on line 131
+[2025-02-02 21:01:22] Error: Error: Unknown named parameter $lab_seo in C:\Storage\prj\LabConnect\labConnect\core\Router.php on line 131
+[2025-02-02 21:02:44] Error: Error: Unknown named parameter $lab_seo in C:\Storage\prj\LabConnect\labConnect\core\Router.php on line 131
+[2025-02-02 21:04:00] Error: ErrorException: strlen(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Storage\prj\LabConnect\labConnect\app\Controllers\User\LabController.php on line 171
+[2025-02-02 21:04:48] Error: ErrorException: strlen(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Storage\prj\LabConnect\labConnect\app\Controllers\User\LabController.php on line 171
+[2025-02-02 21:16:31] Error: ErrorException: Undefined variable $lab in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 52
+[2025-02-02 21:16:39] Error: ErrorException: Undefined variable $lab in C:\Storage\prj\LabConnect\labConnect\app\Views\user\lab\detailLab\index.php on line 52
+[2025-02-02 21:18:11] Error: PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE constraint failed: labs.seo_lab in C:\Storage\prj\LabConnect\labConnect\core\Database.php on line 37
+[2025-02-02 21:18:40] Error: PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE constraint failed: labs.seo_lab in C:\Storage\prj\LabConnect\labConnect\core\Database.php on line 37
+[2025-02-02 21:24:22] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50

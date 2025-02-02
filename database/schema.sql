@@ -1,6 +1,9 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS categoriesUsers;
 DROP TABLE IF EXISTS remember_tokens;
+DROP TABLE IF EXISTS labs;
+DROP TABLE IF EXISTS equipments;
+
 CREATE TABLE IF NOT EXISTS users (
     id TEXT PRIMARY KEY DEFAULT (
         substr(hex(randomblob(4)), 1, 8) || '-' ||
@@ -33,8 +36,7 @@ CREATE TABLE IF NOT EXISTS users (
     FOREIGN KEY (cat_id) REFERENCES categoriesUsers(id)
 ) WITHOUT ROWID;
 
-DROP TABLE IF EXISTS categoriesUsers;
-CREATE TABLE categoriesUsers (
+CREATE TABLE IF NOT EXISTS categoriesUsers (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -55,3 +57,47 @@ CREATE TABLE IF NOT EXISTS remember_tokens (
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 )   WITHOUT ROWID;
+
+CREATE TABLE IF NOT EXISTS labs (
+    id TEXT PRIMARY KEY DEFAULT (
+        substr(hex(randomblob(4)), 1, 8) || '-' ||
+        substr(hex(randomblob(2)), 1, 4) || '-' ||
+        '4' || substr(hex(randomblob(2)), 2, 3) || '-' ||
+        substr('89ab', abs(random()) % 4 + 1, 1) || substr(hex(randomblob(2)), 2, 3) || '-' ||
+        substr(hex(randomblob(6)), 1, 12)
+    ),
+    lab_banner TEXT NOT NULL,
+    lab_name TEXT NOT NULL,
+    lab_description TEXT,
+    seo_lab TEXT NOT NULL,
+    is_active BOOLEAN NOT NULL DEFAULT 1,
+    is_deleted BOOLEAN NOT NULL DEFAULT 0,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by TEXT,
+    updated_by TEXT
+) WITHOUT ROWID;
+
+CREATE TABLE IF NOT EXISTS equipments (
+    id TEXT PRIMARY KEY DEFAULT (
+        substr(hex(randomblob(4)), 1, 8) || '-' ||
+        substr(hex(randomblob(2)), 1, 4) || '-' ||
+        '4' || substr(hex(randomblob(2)), 2, 3) || '-' ||
+        substr('89ab', abs(random()) % 4 + 1, 1) || substr(hex(randomblob(2)), 2, 3) || '-' ||
+        substr(hex(randomblob(6)), 1, 12)
+    ),
+    lab_id TEXT NOT NULL,
+    equipments_banner TEXT NOT NULL,
+    equipments_name TEXT NOT NULL,
+    equipments_description TEXT,
+    equipments_stock INT NOT NULL DEFAULT 0,
+    seo_equipment TEXT NOT NULL,
+    is_active BOOLEAN NOT NULL DEFAULT 1,
+    is_deleted BOOLEAN NOT NULL DEFAULT 0,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by TEXT,
+    updated_by TEXT,
+
+    FOREIGN KEY (lab_id) REFERENCES labs(id)
+)WITHOUT ROWID;

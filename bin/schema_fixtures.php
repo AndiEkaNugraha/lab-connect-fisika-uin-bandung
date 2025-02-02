@@ -24,7 +24,18 @@ $users = [[
     "image"=> "",
     "hash_password"=> password_hash("@Pass123", PASSWORD_DEFAULT),
     "seo_user"=> "super-admin2",
-]];
+],
+[
+    'name' => 'Laboran 1',
+    'cat_id' => "2",
+    "nim"=> 1,
+    "phone" => 1,
+    "email"=> "laboran@mail.com",
+    "image"=> "",
+    "hash_password"=> password_hash("@KATAkata123", PASSWORD_DEFAULT),
+    "seo_user"=> "laboran-1",
+]
+];
 
 $categoryUsers = [
     [

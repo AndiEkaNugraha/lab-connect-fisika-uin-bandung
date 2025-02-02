@@ -152,7 +152,7 @@
                         <div class="col-md-12">
                           <div class="card">
                               <div id="summernote" ><?= $user->bio??'' ?></div>
-                              <input hidden type="text" name="bio">
+                              <input hidden type="text" name="descLong">
                           </div>
                         </div>
                       </div>
