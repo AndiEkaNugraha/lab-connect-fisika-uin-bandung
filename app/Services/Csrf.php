@@ -4,7 +4,7 @@ namespace App\Services;
 
 class CSRF {
   private const TOKEN_LENGTH = 32;
-  private const TOKEN_LIFETIME = 30 * 60;
+  private const TOKEN_LIFETIME = 60 * 60;
   public const TOKEN_FIELD_NAME = '_token';
 
   public static function getToken(): string {

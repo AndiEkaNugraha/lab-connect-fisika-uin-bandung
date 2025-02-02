@@ -22,6 +22,13 @@ $router->add('GET', '/u/{user_seo}', 'User\UserController@dashboard', ['auth']);
 $router->add('GET', '/u/{user_seo}/profile', 'User\UserController@profile', ['auth']);
 $router->add('POST', '/u/{user_seo}/profile/update','User\UserController@profileUpdate', ['auth']);
 $router->add('GET', '/u/{user_seo}/manajemen-user/laboratory', 'User\UserController@listLaboran', ['auth']);
-$router->add('POST', '/u/{user_seo}/manajemen-user/create','User\UserController@createUser', ['auth']);
+$router->add('GET', '/u/{user_seo}/manajemen-user/lecturer', 'User\UserController@listLecturer', ['auth']);
+$router->add('GET', '/u/{user_seo}/manajemen-user/student', 'User\UserController@listStudent', ['auth']);
+$router->add('POST', '/u/{user_seo}/manajemen-user/laboratory','User\UserController@createUser', ['auth']);
+$router->add('POST', '/u/{user_seo}/manajemen-user/lecturer','User\UserController@createUser', ['auth']);
+$router->add('POST', '/u/{user_seo}/manajemen-user/student','User\UserController@createUser', ['auth']);
+$router->add('POST', '/u/{user_seo}/manajemen-user/delete','User\UserController@deleteUser', ['auth']);
+$router->add('POST', '/u/{user_seo}/manajemen-user/edit','User\UserController@editUser', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab-equipment', 'User\EquipmentController@listEquipment', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab-news', 'User\NewsController@listNews', ['auth']);
+

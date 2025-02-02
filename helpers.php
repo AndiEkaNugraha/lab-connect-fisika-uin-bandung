@@ -17,6 +17,10 @@ if (!function_exists('csrf_token')) {
       <input type="hidden" name="$tokenField" value="$token" />
     TAG;
   }
+  function csrf_token_value(): string {
+    $token = CSRF::getToken();
+    return $token;
+  }
 }
 
 if (!function_exists('check')) {

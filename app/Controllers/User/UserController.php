@@ -79,17 +79,52 @@ class UserController {
         );
     }
     public function listLaboran($user_seo){
+        $listUser = User::findByCat(2);
         return View::render(
             template:'user/userManagement/index', 
             data:[
                 'user_seo'=> $user_seo,
                 'page' => 'Laboran',
                 'cat_id'=> '2',
+                'listUser' => $listUser??[],
+                'datatabel' => true,
+                'switchButton'=> true,
+                'alert'=> true,
             ],
             layout: 'layout/user/main'
         ); 
     }
-
+    public function listLecturer($user_seo){
+        $listUser = User::findByCat(3);
+        return View::render(
+            template:'user/userManagement/index', 
+            data:[
+                'user_seo'=> $user_seo,
+                'page' => 'Lecturer',
+                'cat_id'=> '3',
+                'listUser' => $listUser??[],
+                'datatabel' => true,
+                'switchButton'=> true,
+                'alert'=> true,
+            ],
+            layout: 'layout/user/main'
+        ); 
+    }public function listStudent($user_seo){
+        $listUser = User::findByCat(4);
+        return View::render(
+            template:'user/userManagement/index', 
+            data:[
+                'user_seo'=> $user_seo,
+                'page' => 'Student',
+                'cat_id'=> '4',
+                'listUser' => $listUser??[],
+                'datatabel' => true,
+                'switchButton'=> true,
+                'alert'=> true,
+            ],
+            layout: 'layout/user/main'
+        ); 
+    }
     public function createUser($user_seo){
         $name = $_POST['name'];
         $nim = $_POST['nim'];
@@ -98,8 +133,8 @@ class UserController {
         $password = $_POST['password'];
         $cat_id = $_POST['cat_id'];
         $page = $_POST['page'];
-        // Validasi input kosong
         if (!$name || !$nim || !$email || !$phone || !$password) {
+            $listUser = User::findByCat($cat_id);
             return View::render(
                 template: 'user/userManagement/index',
                 data: [
@@ -107,6 +142,10 @@ class UserController {
                     'user_seo'=> $user_seo,
                     'page' => $page,
                     'cat_id'=> $cat_id,
+                    'listUser' => $listUser,
+                    'datatabel' => true,
+                    'switchButton'=> true,
+                    'alert'=> true,
                 ],
                 layout: 'layout/user/main'
             );
@@ -117,6 +156,7 @@ class UserController {
         $nimRegistered = User::findByNim($nim);
         $emailRegistered = User::findByEmail($email);
         if ($nimRegistered || $emailRegistered || $invalidEmail || $invalidPassword) {
+            $listUser = User::findByCat($cat_id);
             return View::render(
                 template:'user/userManagement/index', 
                 data:[
@@ -132,6 +172,10 @@ class UserController {
                     'user_seo'=> $user_seo,
                     'page' => $page,
                     'cat_id'=> $cat_id,
+                    'listUser' => $listUser,
+                    'datatabel' => true,
+                    'switchButton'=> true,
+                    'alert'=> true,
                 ],
                 layout: 'layout/user/main'
             ); 
@@ -149,6 +193,7 @@ class UserController {
 
         $userCreated = User::create($user);
         if ($userCreated != null) {
+            $listUser = User::findByCat($cat_id);
             return View::render(
                 template:'user/userManagement/index', 
                 data:[
@@ -156,21 +201,58 @@ class UserController {
                     'page' => $page,
                     'cat_id'=> $cat_id,
                     'success'=> 'Create user successfully.',
+                    'listUser' => $listUser,
+                    'datatabel' => true,
+                    'switchButton'=> true,
+                    'alert'=> true,
                 ],
                 layout: 'layout/user/main'
             );
         }
+        $listUser = User::findByCat($cat_id);
         return View::render(
             template:'user/userManagement/index', 
             data:[
                 'user_seo'=> $user_seo,
                 'page' => $page,
                 'cat_id'=> $cat_id,
-                'error' => 'Failed to create user.'
+                'error' => 'Failed to create user.',
+                'listUser' => $listUser,
+                'datatabel' => true,
+                'switchButton'=> true,
+                'alert'=> true,
             ],
             layout: 'layout/user/main'
         );
         
 
+    }
+    public function deleteUser($user_seo) {
+        $id = $_POST['id'];
+
+        $deleteUser = User::find($id);  
+        if ($deleteUser != null) {
+            $deleteUser->is_deleted = 1;
+            $deleteUser->save();
+            $response['success'] = true;
+            return json_encode($response);
+        }
+        $response['success'] = false;
+        return json_encode($response);
+    }
+    public function editUser($user_seo) {
+        $id = $_POST['id'];
+        $status = $_POST['is_active'];
+        $editUser = User::find($id);  
+        // $editUser = null; 
+        if ($editUser != null) {
+            $editUser->is_active = $_POST['is_active']??0;
+            $editUser->save();
+            $response['success'] = true;
+            $response['csrf_token'] = csrf_token_value();
+            return json_encode($response);
+        }
+        $response['success'] = false;
+        return json_encode($response);
     }
 }

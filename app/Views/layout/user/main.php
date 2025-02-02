@@ -19,7 +19,21 @@
 <link rel="stylesheet" href="/assets/user/dist/css/et-line-font/et-line-font.css">
 <link rel="stylesheet" href="/assets/user/dist/css/themify-icons/themify-icons.css">
 
+<!-- Tabs -->
+<link href="/assets/user/dist/css/tabs.css" rel="stylesheet">
+
+<?php if (isset($datatabel)) : ?>
+<!-- DataTables -->
+<link rel="stylesheet" href="/assets/user/dist/plugins/datatables/css/dataTables.bootstrap.min.css">
+<?php endif; ?>
+
+<?php if (isset($switchButton)) : ?>
+<!-- bootstrap-switch -->
+<link rel="stylesheet" href="/assets/user/dist/plugins/bootstrap-switch/bootstrap-switch.css">
+<?php endif; ?>
+
 <?php if (isset($edit_avatar) || isset($input_image)) : ?>
+
 <!-- dropify -->
 <link rel="stylesheet" href="/assets/user/dist/plugins/dropify/dropify.min.css">
 <?php endif; ?>
@@ -287,5 +301,37 @@
     });
 </script>
 <?php endif; ?>
+
+<?php if (isset($alert)) : ?>
+<!-- /.content-wrapper -->
+<script src="/assets/user/dist/js/alert.js"></script>
+<?php endif; ?>
+
+<?php if (isset($datatabel)) : ?>
+<!-- DataTable --> 
+<script src="/assets/user/dist/plugins/datatables/jquery.dataTables.min.js"></script> 
+<script src="/assets/user/dist/plugins/datatables/dataTables.bootstrap.min.js"></script> 
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true
+    })
+  })
+</script>
+<?php endif; ?>
+
+<?php if (isset($switchButton)) : ?>
+<!-- bootstrap-switch --> 
+<script src="/assets/user/dist/plugins/bootstrap-switch/bootstrap-switch.js"></script> 
+<script src="/assets/user/dist/plugins/bootstrap-switch/highlight.js"></script> 
+<script src="/assets/user/dist/plugins/bootstrap-switch/main.js"></script>
+<?php endif; ?>
+
 </body>
 </html>
