@@ -10,7 +10,10 @@ class EquipmentController {
         // Authorization::verify('edit_tools');
         return View::render(
             template:'user/equipment/index', 
-            data:[],
+            data:[
+                'input_image'=> true,
+                'input_longText' => true,
+            ],
             layout: 'layout/user/main'
         );
     }

@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="/assets/user/dist/css/themify-icons/themify-icons.css">
 
 <!-- Tabs -->
-<link href="dist/css/tabs.css" rel="stylesheet">
+<link href="/assets/user/dist/css/tabs.css" rel="stylesheet">
 
 <?php if (isset($datatabel)) : ?>
 <!-- DataTables -->
@@ -32,11 +32,12 @@
 <link rel="stylesheet" href="/assets/user/dist/plugins/bootstrap-switch/bootstrap-switch.css">
 <?php endif; ?>
 
-<?php if (isset($edit_avatar)) : ?>
+<?php if (isset($edit_avatar) || isset($input_image)) : ?>
+
 <!-- dropify -->
 <link rel="stylesheet" href="/assets/user/dist/plugins/dropify/dropify.min.css">
 <?php endif; ?>
-<?php if (isset($edit_longForm)) : ?>
+<?php if (isset($edit_longForm) || isset($input_longText)) : ?>
 <link rel="stylesheet" href="/assets/user/dist/plugins/summernote/summernote-bs4.css">
 <?php endif; ?>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -205,9 +206,11 @@
             <span>Alat & Bahan</span>
           </a>
         </li>
-          <li class="treeview"> <a href="#"> <i class="fa fa-globe"></i> <span>News</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-          </ul>
+        <li class=""> 
+          <a href="/u/<?= $user->seo_user??''?>/lab-news"> 
+            <i class="fa fa-globe"></i>
+            <span>News</span>
+          </a>
           </li>
         <?php endif;?>
       </ul>
@@ -237,7 +240,7 @@
 <script src="/assets/user/dist/plugins/morris/morris.js"></script>
 <script src="/assets/user/dist/plugins/functions/morris-init.js"></script>
 
-<?php if (isset($edit_avatar)) : ?>
+<?php if (isset($edit_avatar) || isset($input_image)) : ?>
 <script src="/assets/user/dist/plugins/dropify/dropify.min.js"></script> 
 <script>
     $(document).ready(function(){
@@ -282,7 +285,7 @@
     });
 </script>
 <?php endif; ?>
-<?php if (isset($edit_longForm)) : ?>
+<?php if (isset($edit_longForm) || isset($input_longText)) : ?>
 <script src="/assets/user/dist/plugins/summernote/summernote-bs4.js"></script> 
 <script> 
     $('#summernote').summernote({
