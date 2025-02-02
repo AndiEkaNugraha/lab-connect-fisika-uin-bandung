@@ -27,7 +27,7 @@ class Authorization {
     // }
 
     return match($action) {
-      'edit_labolatorium', 'edit_tools' => in_array(
+      'edit_labolatorium', 'edit_tools', 'edit_facility' => in_array(
         $user->cat_id, [2, 3]
       ),
       'edit_laboran', 'edit_dosen', 'user_manajemen' => in_array(

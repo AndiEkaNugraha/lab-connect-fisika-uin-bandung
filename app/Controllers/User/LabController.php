@@ -5,9 +5,9 @@ use App\Services\Authorization;
 use Core\View;
 use Core\Router;
 
-class LabolatoryController {
+class LabController {
     public function listNews($user_seo) {
-        Authorization::verify('edit_labolatorium');
+        Authorization::verify('edit_facility');
         return View::render(
             template:'user/News/index.php', 
             data:[],

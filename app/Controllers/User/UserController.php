@@ -2,7 +2,7 @@
 
 namespace App\Controllers\User;
 use App\Services\Auth;
-use App\Services\CSRF;
+use App\Services\Authorization;
 use Core\View;
 use Core\Router;
 use App\Models\User;
@@ -79,6 +79,7 @@ class UserController {
         );
     }
     public function listLaboran($user_seo){
+        Authorization::verify('user_manajemen');
         $listUser = User::findByCat(2);
         return View::render(
             template:'user/userManagement/index', 
@@ -95,6 +96,7 @@ class UserController {
         ); 
     }
     public function listLecturer($user_seo){
+        Authorization::verify('user_manajemen');
         $listUser = User::findByCat(3);
         return View::render(
             template:'user/userManagement/index', 
@@ -110,6 +112,7 @@ class UserController {
             layout: 'layout/user/main'
         ); 
     }public function listStudent($user_seo){
+        Authorization::verify('user_manajemen');
         $listUser = User::findByCat(4);
         return View::render(
             template:'user/userManagement/index', 
@@ -126,6 +129,7 @@ class UserController {
         ); 
     }
     public function createUser($user_seo){
+        Authorization::verify('user_manajemen');
         $name = $_POST['name'];
         $nim = $_POST['nim'];
         $email = $_POST['email'];
@@ -228,6 +232,7 @@ class UserController {
 
     }
     public function deleteUser($user_seo) {
+        Authorization::verify('user_manajemen');
         $id = $_POST['id'];
 
         $deleteUser = User::find($id);  
@@ -241,6 +246,7 @@ class UserController {
         return json_encode($response);
     }
     public function editUser($user_seo) {
+        Authorization::verify('user_manajemen');
         $id = $_POST['id'];
         $status = $_POST['is_active'];
         $editUser = User::find($id);  

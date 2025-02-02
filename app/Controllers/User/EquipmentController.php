@@ -7,7 +7,7 @@ use Core\Router;
 
 class EquipmentController {
     public function listEquipment($user_seo) {
-        // Authorization::verify('edit_tools');
+        Authorization::verify('edit_facility');
         return View::render(
             template:'user/equipment/index', 
             data:[

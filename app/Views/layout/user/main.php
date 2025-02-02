@@ -174,7 +174,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Personal</li>
         <li class=""> 
-          <a href="/u/<?= $user->seo_user??''?>/labolatorium"> 
+          <a href="/u/<?= $user->seo_user??''?>/lab"> 
             <i class="fa fa-hospital-o"></i> 
             <span>Dashboard</span> 
           </a>
@@ -196,7 +196,7 @@
         <?php if(check('edit_facility')): ?>
         <li class="header">Facility</li>
         <li class=""> 
-          <a href="/u/<?= $user->seo_user??''?>/labolatorium"> 
+          <a href="/u/<?= $user->seo_user??''?>/lab"> 
             <i class="fa fa-hospital-o"></i> 
             <span>Labolatorium</span> 
           </a>
