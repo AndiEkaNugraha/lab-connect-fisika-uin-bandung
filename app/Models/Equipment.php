@@ -15,6 +15,7 @@ class Equipment extends Model {
   public $equipments_description;
   public $equipments_stock;
   public $seo_equipment;
+  public $equipments_damaged;
   public $is_active;
   public $is_deleted;
   public $created_at;

@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS equipments (
     equipments_name TEXT NOT NULL,
     equipments_description TEXT,
     equipments_stock INT NOT NULL DEFAULT 0,
+    equipments_damaged INT NOT NULL DEFAULT 0,
     seo_equipment TEXT NOT NULL,
     is_active BOOLEAN NOT NULL DEFAULT 1,
     is_deleted BOOLEAN NOT NULL DEFAULT 0,
