@@ -192,9 +192,11 @@
             <span>Alat & Bahan</span>
           </a>
         </li>
-          <li class="treeview"> <a href="#"> <i class="fa fa-globe"></i> <span>News</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-          </ul>
+        <li class=""> 
+          <a href="/u/<?= $user->seo_user??''?>/lab-equipment"> 
+            <i class="fa fa-globe"></i>
+            <span>News</span>
+          </a>
           </li>
         <?php endif;?>
       </ul>

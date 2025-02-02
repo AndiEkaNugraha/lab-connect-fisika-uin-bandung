@@ -5,11 +5,10 @@ use App\Services\Authorization;
 use Core\View;
 use Core\Router;
 
-class LabolatoryController {
-    public function listNews($user_seo) {
-        Authorization::verify('edit_labolatorium');
+class NewsController {
+    public function labolatory($user_seo) {
         return View::render(
-            template:'user/News/index.php', 
+            template:'user/labolatory/index', 
             data:[],
             layout: 'layout/user/main'
         );
