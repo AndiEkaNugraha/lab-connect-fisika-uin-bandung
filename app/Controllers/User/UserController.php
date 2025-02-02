@@ -84,7 +84,7 @@ class UserController {
             template:'user/userManagement/index', 
             data:[
                 'user_seo'=> $user_seo,
-                'page' => 'Laboran',
+                'page' => 'Labolatory',
                 'cat_id'=> '2',
                 'listUser' => $listUser??[],
                 'datatabel' => true,

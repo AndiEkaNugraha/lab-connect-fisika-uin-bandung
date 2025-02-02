@@ -22,9 +22,9 @@ class Authorization {
       return false;
     }
 
-    if (1 === $user->cat_id) {
-      return true;
-    }
+    // if (1 === $user->cat_id) {
+    //   return true;
+    // }
 
     return match($action) {
       'edit_labolatorium', 'edit_tools' => in_array(
