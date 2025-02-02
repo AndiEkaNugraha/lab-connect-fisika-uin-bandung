@@ -32,7 +32,7 @@
               <div class="col-md-12">
                 <div class="form-group has-feedback">
                   <label class="control-label">Nim/Nik</label>
-                  <input value="<?= $nim??'' ?>" class="form-control" placeholder="1117030000" type="text" name="nim">
+                  <input value="<?= $nim??'' ?>" class="form-control" placeholder="1117030000" type="number" name="nim">
                   <span class="fa fa-id-badge form-control-feedback" aria-hidden="true"></span> 
                   <?php if (isset($nimRegistered) && $nimRegistered): ?>
                     <small class="text-danger">Nim/Nik already registered</small>
@@ -42,7 +42,7 @@
               <div class="col-md-12">
                 <div class="form-group has-feedback">
                   <label class="control-label">Email</label>
-                  <input value="<?= $email??'' ?>" class="form-control" placeholder="habibi@mail.co" type="text" name = "email">
+                  <input value="<?= $email??'' ?>" class="form-control" placeholder="habibi@mail.co" type="email" name = "email">
                   <span class="fa fa-phone form-control-feedback" aria-hidden="true"></span> 
                     <?php if ((isset($invalidEmail) && $invalidEmail) || (isset($emailRegistered) && $emailRegistered)): ?>
                       <small class="text-danger">
@@ -54,15 +54,22 @@
               <div class="col-md-12">
                 <div class="form-group has-feedback">
                   <label class="control-label">Phone</label>
-                  <input value="<?= $phone??'' ?>" class="form-control" placeholder="02112345678" type="text" name = "phone">
+                  <input value="<?= $phone??'' ?>" class="form-control" placeholder="02112345678" type="number" name = "phone">
                   <span class="fa fa-envelope-open-o form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group has-feedback">
                   <label class="control-label">Password</label>
-                  <input class="form-control" placeholder="@USer123" type="text" name = "password">
-                  <span class="fa fa-lock form-control-feedback" aria-hidden="true"></span> </div>
+                  <div class="input-group form-control" style="padding-right: 22px;">
+                    <input id="password" class="" placeholder="@USer123" type="password" name = "password" style="outline: none;border: none;width: 100%;">
+                    <span class="input-group-append">
+                      <button type="button" class="border-0 bg-white" id="togglePassword" style="outline: none;height: 100%;color:rgb(197, 197, 197);">
+                        <i class="fa fa-eye"></i>
+                      </button>
+                    </span>
+                  </div>
+                </div>
                   <?php if (isset($invalidPassword) && $invalidPassword): ?>
                     <small class="text-danger">At least 8 characters, including uppercase, lowercase, number, and symbol</small>
                   <?php endif; ?>
@@ -202,3 +209,5 @@ window.onload = function() {
   });
 };
 </script>
+
+<script src="/assets/user/dist/js/showPassword.js"></script>
