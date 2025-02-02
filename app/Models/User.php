@@ -52,5 +52,14 @@ class User extends Model {
     );
     return $result ? $result : null;
   }
+  public static function findByCat(string $cat): array {
+    $db = App::get('database');
+    $result = $db->fetchAll(
+      'SELECT * FROM users WHERE cat_id = ? and is_deleted = 0', 
+      [$cat],
+      static::class
+    );
+    return $result ? $result : null;
+  }
 
 }

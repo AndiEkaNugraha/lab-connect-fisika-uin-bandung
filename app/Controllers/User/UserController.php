@@ -79,17 +79,18 @@ class UserController {
         );
     }
     public function listLaboran($user_seo){
+        $listUser = User::findByCat(2);
         return View::render(
             template:'user/userManagement/index', 
             data:[
                 'user_seo'=> $user_seo,
                 'page' => 'Laboran',
                 'cat_id'=> '2',
+                'listUser' => $listUser,
             ],
             layout: 'layout/user/main'
         ); 
     }
-
     public function createUser($user_seo){
         $name = $_POST['name'];
         $nim = $_POST['nim'];
@@ -98,7 +99,7 @@ class UserController {
         $password = $_POST['password'];
         $cat_id = $_POST['cat_id'];
         $page = $_POST['page'];
-        // Validasi input kosong
+        $listUser = json_decode($_POST['listUser'], true); // Mengubah JSON menjadi array
         if (!$name || !$nim || !$email || !$phone || !$password) {
             return View::render(
                 template: 'user/userManagement/index',
@@ -107,6 +108,7 @@ class UserController {
                     'user_seo'=> $user_seo,
                     'page' => $page,
                     'cat_id'=> $cat_id,
+                    'listUser' => $listUser,
                 ],
                 layout: 'layout/user/main'
             );
@@ -132,6 +134,7 @@ class UserController {
                     'user_seo'=> $user_seo,
                     'page' => $page,
                     'cat_id'=> $cat_id,
+                    'listUser' => $listUser,
                 ],
                 layout: 'layout/user/main'
             ); 
@@ -156,6 +159,7 @@ class UserController {
                     'page' => $page,
                     'cat_id'=> $cat_id,
                     'success'=> 'Create user successfully.',
+                    'listUser' => $listUser
                 ],
                 layout: 'layout/user/main'
             );
@@ -166,11 +170,25 @@ class UserController {
                 'user_seo'=> $user_seo,
                 'page' => $page,
                 'cat_id'=> $cat_id,
-                'error' => 'Failed to create user.'
+                'error' => 'Failed to create user.',
+                'listUser' => $listUser
             ],
             layout: 'layout/user/main'
         );
         
 
+    }
+    public function deleteUser($user_seo) {
+        $id = $_POST['id'];
+        
+        $response['success'] = false;
+        $
+        $response['success'] = true;
+        echo json_encode($response);
+    }
+    public function editUser($user_seo) {
+
+        $response['success'] = true;
+        echo json_encode($response);
     }
 }
