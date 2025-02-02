@@ -193,7 +193,7 @@
           </a>
         </li>
         <li class=""> 
-          <a href="/u/<?= $user->seo_user??''?>/lab-equipment"> 
+          <a href="/u/<?= $user->seo_user??''?>/lab-news"> 
             <i class="fa fa-globe"></i>
             <span>News</span>
           </a>

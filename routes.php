@@ -24,4 +24,4 @@ $router->add('POST', '/u/{user_seo}/profile/update','User\UserController@profile
 $router->add('GET', '/u/{user_seo}/manajemen-user/laboratory', 'User\UserController@listLaboran', ['auth']);
 $router->add('POST', '/u/{user_seo}/manajemen-user/create','User\UserController@createUser', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab-equipment', 'User\EquipmentController@listEquipment', ['auth']);
-$router->add('GET', '/u/{user_seo}/lab-equipment', 'User\NewsController@listEquipment', ['auth']);
+$router->add('GET', '/u/{user_seo}/lab-news', 'User\NewsController@listNews', ['auth']);

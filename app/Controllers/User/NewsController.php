@@ -6,9 +6,9 @@ use Core\View;
 use Core\Router;
 
 class NewsController {
-    public function labolatory($user_seo) {
+    public function listNews($user_seo) {
         return View::render(
-            template:'user/labolatory/index', 
+            template:'user/News/index', 
             data:[],
             layout: 'layout/user/main'
         );
