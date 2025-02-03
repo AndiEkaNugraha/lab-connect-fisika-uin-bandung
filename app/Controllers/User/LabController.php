@@ -49,7 +49,7 @@ class LabController {
         Authorization::verify('edit_facility');
         $name = $_POST['name'];
         $desc = $_POST['descLong'];
-        $seo = strlen($_POST['seo']) != 0 ? $_POST['seo'] : strtolower(str_replace(' ','-', $name));
+        $seo = strlen($_POST['seo']) != 0 ? strtolower(str_replace(' ','-',$_POST['seo'])) : strtolower(str_replace(' ','-', $name));
         $status = $_POST['status'];
         $created_by = Auth::user()->id;
         $banner = null;
@@ -122,6 +122,9 @@ class LabController {
     public function editLab($user_seo, $lab_seo ) {
         Authorization::verify('edit_facility');
         $lab = Lab::findBySeo($lab_seo);
+        if ($lab == null) {
+            Router::redirect('/u/'.$user_seo.'/lab');
+        }
         return View::render(
             template:'user/lab/detailLab/index', 
             data:[
@@ -136,7 +139,7 @@ class LabController {
         Authorization::verify('edit_facility');
         $name = $_POST['name'];
         $desc = $_POST['descLong'];
-        $seo = strlen($_POST['seo']) != 0 ? $_POST['seo'] : strtolower(str_replace(' ','-', $name));
+        $seo = strlen($_POST['seo']) != 0 ? strtolower(str_replace(' ','-',$_POST['seo'])) : strtolower(str_replace(' ','-', $name));
         $status = $_POST['status'];
         $updated_by = Auth::user()->id;
         $banner = null;

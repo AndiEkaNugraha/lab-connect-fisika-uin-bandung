@@ -32,7 +32,7 @@ class Equipment extends Model {
     );
     return $result ? $result : [];
   }
-  public static function findBySeo(string $seo): ?Lab {
+  public static function findBySeo(string $seo): ?Equipment {
     $db = App::get('database');
     $result = $db->fetch(
       'SELECT * FROM equipments WHERE seo_equipment = ?', 
