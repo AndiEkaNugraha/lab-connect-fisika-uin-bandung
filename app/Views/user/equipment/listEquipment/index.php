@@ -34,11 +34,12 @@
               <?php foreach ($listEquipments as $equipments) : ?>
                 <tr>
                   <td><?= $equipments->equipments_name ?></td>
-                  <td><?= $equipments->created_at ?></td>
+                  <td><?= $equipments->equipments_stock ?></td>
+                  <td><?= $equipments->equipments_damaged ?></td>
                   <td><?= $equipments->is_active ? 'Active' : 'Inactive' ?></td>
                   <td class="text-center" style="font-size: 20px">
                     <a href="/u/<?= $user->seo_user??'' ?>/lab-equipment/edit/<?= $equipments->seo_equipment ?>"><i class="fa fa-pencil-square-o"></i></a>
-                    <a onclick='deleteLab("<?php echo $lab->id ?>")'><i class="fa fa-trash text-danger" style="cursor: pointer"></i></a>
+                    <a onclick='deleteLab("<?php echo $equipments->id ?>")'><i class="fa fa-trash text-danger" style="cursor: pointer"></i></a>
                   </td>
                 </tr>
               <?php endforeach; ?>

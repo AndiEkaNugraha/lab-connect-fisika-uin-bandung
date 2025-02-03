@@ -25,10 +25,17 @@
       <div class="col-12 m-t-3">
         <fieldset class="form-group">
           <label>Equipment location</label>
-          <select class="custom-select form-control" id="location" name="location">
+          <select class="custom-select form-control" id="lab_id" name="lab_id">
             <option disabled selected>choose location</option>
-            <option value="">lab</option>
+            <?php if (isset($listLab)):?>
+              <?php foreach ($listLab as $lab):?>
+                <option value="<?= $lab->id?>"><?= $lab->lab_name ?></option>
+              <?php endforeach; ?>  
+            <?php endif; ?>  
           </select>
+          <?php if(isset($location) && strlen($location) === 0):;?>
+            <small class="text-danger">Equipment location cannot be empty</small>
+          <?php endif; ?>
         </fieldset>
       </div>
       <div class="col-12 m-t-3">
