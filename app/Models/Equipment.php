@@ -23,4 +23,13 @@ class Equipment extends Model {
   public $created_by;
   public $updated_by;
   
+  public static function findAll(): array {
+    $db = App::get('database');
+    $result = $db->fetchAll(
+      'SELECT * FROM equipments WHERE is_deleted = ?',
+      [0],
+      static::class
+    );
+    return $result ? $result : [];
+  }
 }
