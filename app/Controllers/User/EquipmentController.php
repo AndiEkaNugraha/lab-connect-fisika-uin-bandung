@@ -22,6 +22,19 @@ class EquipmentController {
             layout: 'layout/user/main'
         );
     }
+    public function deleteEquipment($user_seo) {
+        Authorization::verify('edit_facility');
+        $id = $_POST['id'];
+        $user = Auth::user()->id;
+        $equipment = Equipment::findById($id);
+        if ($equipment != null) {
+            $equipment->is_deleted = 1;
+            $equipment->updated_by = $user;
+            $equipment->save();
+            $response['success'] = true;
+            return json_encode($response);
+        }
+    }
     public function detailEquipment($user_seo) {
         Authorization::verify('edit_facility');
         $listLab = Lab::findAll();
@@ -49,13 +62,13 @@ class EquipmentController {
 
     public function AddEquipment($user_seo) {
         Authorization::verify('edit_facility');
-        $name = $_POST['name'];
-        $lab_id = $_POST['lab_id'];
-        $desc = $_POST['descLong'];
+        $name = $_POST['name']??null;
+        $lab_id = $_POST['lab_id']??null;
+        $desc = $_POST['descLong']??null;
         $stock = $_POST['stock']??'0';
         $damaged = $_POST['damaged']??'0';
         $seo = strlen($_POST['seo']) != 0 ? $_POST['seo'] : strtolower(str_replace(' ','-', $name));
-        $status = $_POST['status'];
+        $status = $_POST['status']??'';
         $created_by = Auth::user()->id;
         $banner = null;
         
@@ -100,7 +113,7 @@ class EquipmentController {
             );
         }
 
-        if (!$name || !$desc) {
+        if (!$name || !$desc || !$lab_id) {
             $listLab = Lab::findAll();
             return View::render(
                 template:'user/equipment/detailEquipment/index', 
@@ -180,9 +193,9 @@ class EquipmentController {
     }
     public function updateEquipment($user_seo, $equipment_seo ) {
         Authorization::verify('edit_facility');
-        $name = $_POST['name'];
-        $lab_id = $_POST['lab_id'];
-        $desc = $_POST['descLong'];
+        $name = $_POST['name']??null;
+        $lab_id = $_POST['lab_id']??null;
+        $desc = $_POST['descLong']??null;
         $stock = $_POST['stock']??'0';
         $damaged = $_POST['damaged']??'0';
         $seo = strlen($_POST['seo']) != 0 ? strtolower(str_replace(' ','-',$_POST['seo'])) : strtolower(str_replace(' ','-', $name));

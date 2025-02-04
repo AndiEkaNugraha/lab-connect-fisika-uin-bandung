@@ -98,7 +98,7 @@
                         <label class="col-md-12">Avatar</label>
                         <div class="col-md-12">
                         <div class="card">
-                            <input type="file" name="avatar" id="input-file-max-fs" class="dropify" data-max-file-size="1M" data-default-file="<?= $user->avatar? '/assets/file/avatar/'. $user->avatar : '/assets/img/profile-default.jpg'  ?>"/>
+                            <input accept="image/*" type="file" name="avatar" id="input-file-max-fs" class="dropify" data-max-file-size="1M" data-default-file="<?= $user->avatar? '/assets/file/avatar/'. $user->avatar : '/assets/img/profile-default.jpg'  ?>"/>
                             <input type="text" name="avatar" value="<?= $user->avatar??'' ?>" hidden>
                         </div>
                         </div>

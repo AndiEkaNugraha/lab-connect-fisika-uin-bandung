@@ -33,6 +33,8 @@ class Authorization {
       'edit_laboran', 'edit_dosen', 'user_manajemen' => in_array(
         $user->cat_id, [1]
       ),
+      'edit_post' => in_array($user->cat_id, [1, 2, 3]) && $resource instanceof Post,
+      'reservation' => in_array($user->cat_id, [3,4]),
       default => false
     };
   }

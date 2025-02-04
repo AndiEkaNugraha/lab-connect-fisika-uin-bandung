@@ -36,9 +36,17 @@ $router->add('POST', '/u/{user_seo}/lab/create', 'User\LabController@addLab', ['
 $router->add('GET', '/u/{user_seo}/lab/edit/{lab_seo}', 'User\LabController@editLab', ['auth']);
 $router->add('POST', '/u/{user_seo}/lab/edit/{lab_seo}', 'User\LabController@updateLab', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab-equipment', 'User\EquipmentController@listEquipment', ['auth']);
+$router->add('POST', '/u/{user_seo}/lab-equipment', 'User\EquipmentController@deleteEquipment', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab-equipment/create', 'User\EquipmentController@detailEquipment', ['auth']);
 $router->add('POST', '/u/{user_seo}/lab-equipment/create', 'User\EquipmentController@AddEquipment', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab-equipment/edit/{equipment_seo}', 'User\EquipmentController@editEquipment', ['auth']);
 $router->add('POST', '/u/{user_seo}/lab-equipment/edit/{equipment_seo}', 'User\EquipmentController@updateEquipment', ['auth']);
+
+$router->add('GET', '/u/{user_seo}/reservation-lab', 'User\labSubmissionController@listReservation', ['auth']);
+$router->add('GET', '/u/{user_seo}/reservation-lab/create', 'User\labSubmissionController@createReservation', ['auth']);
+$router->add('POST', '/u/{user_seo}/reservation-lab/create', 'User\labSubmissionController@AddReservation', ['auth']);
+$router->add('GET', '/u/{user_seo}/reservation-lab/{reservation_id}', 'User\labSubmissionController@editReservation', ['auth']);
+$router->add('POST', '/u/{user_seo}/reservation-lab/{reservation_id}', 'User\labSubmissionController@updateReservation', ['auth']);
+
 $router->add('GET', '/u/{user_seo}/lab-news', 'User\NewsController@listNews', ['auth']);
 

@@ -60,7 +60,7 @@ function deleteLab(userId) {
     formData.append('id', userId);
     formData.append('_token', csrfToken);
 
-    fetch('/u/<?= $user->seo_user??'' ?>/lab', {
+    fetch('/u/<?= $user->seo_user??'' ?>/lab-equipment', {
       method: 'POST',
       body: formData // Kirim sebagai form data
     })

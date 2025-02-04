@@ -41,7 +41,7 @@
       <div class="col-12 m-t-3">
         <fieldset class="form-group">
           <label for="input-file-max-fs">Banner equipment</label>
-          <input type="file" name="banner" id="input-file-max-fs" class="dropify" data-max-file-size="2M" data-default-file=<?= isset($equipment->equipments_banner)? '/assets/file/equipment/'.$equipment->equipments_banner:'/assets/img/banner-lab-default.jpg' ?> />
+          <input accept="image/*" type="file" name="banner" id="input-file-max-fs" class="dropify" data-max-file-size="2M" data-default-file=<?= isset($equipment->equipments_banner)? '/assets/file/equipment/'.$equipment->equipments_banner:'/assets/img/banner-lab-default.jpg' ?> />
           <input type="text" name="banner" value="" hidden>
         </fieldset>
       </div>

@@ -22,6 +22,11 @@
 <!-- Tabs -->
 <link href="/assets/user/dist/css/tabs.css" rel="stylesheet">
 
+<?php if (isset($formWizzard)) : ?>
+<!-- form wizard -->
+<link rel="stylesheet" href="/assets/user/dist/plugins/formwizard/jquery-steps.css">
+<?php endif; ?>
+
 <?php if (isset($datatabel)) : ?>
 <!-- DataTables -->
 <link rel="stylesheet" href="/assets/user/dist/plugins/datatables/css/dataTables.bootstrap.min.css">
@@ -32,7 +37,7 @@
 <link rel="stylesheet" href="/assets/user/dist/plugins/bootstrap-switch/bootstrap-switch.css">
 <?php endif; ?>
 
-<?php if (isset($edit_avatar) || isset($input_image)) : ?>
+<?php if (isset($edit_avatar) || isset($input_image) || isset($input_file)) : ?>
 
 <!-- dropify -->
 <link rel="stylesheet" href="/assets/user/dist/plugins/dropify/dropify.min.css">
@@ -186,9 +191,9 @@
             <i class="fa fa-address-card-o"></i> <span>User</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> 
           </a>
           <ul class="treeview-menu">
-            <li><a href="/u/<?=$user->seo_user??''?>/manajemen-user/laboratory">Laboran</a></li>
-            <li><a href="/u/<?=$user->seo_user??''?>/manajemen-user/lecturer">Dosen</a></li>
-            <li><a href="/u/<?=$user->seo_user??''?>/manajemen-user/student">Mahasiswa</a></li>
+            <li><a href="/u/<?=$user->seo_user??''?>/manajemen-user/laboratory">Lab Technician</a></li>
+            <li><a href="/u/<?=$user->seo_user??''?>/manajemen-user/lecturer">Lecturer</a></li>
+            <li><a href="/u/<?=$user->seo_user??''?>/manajemen-user/student">Student</a></li>
           </ul>
         </li>
         <?php endif;?>
@@ -197,14 +202,29 @@
         <li class="header">Facility</li>
         <li class=""> 
           <a href="/u/<?= $user->seo_user??''?>/lab"> 
-            <i class="fa fa-hospital-o"></i> 
-            <span>Labolatorium</span> 
+            <i class="fa fa-building"></i> 
+            <span>Labolatory</span> 
           </a>
         </li>
         <li class=""> 
           <a href="/u/<?= $user->seo_user??''?>/lab-equipment"> 
             <i class="fa fa-thermometer-half"></i>
-            <span>Alat & Bahan</span>
+            <span>Equipment</span>
+          </a>
+        </li>
+        <?php endif;?>
+        <?php if(check('reservation')): ?>
+        <li class="header">Request</li>
+        <li class=""> 
+          <a href="/u/<?= $user->seo_user??''?>/reservation-lab"> 
+            <i class="fa fa-map-marker"></i>
+            <span>Lab Reservation</span>
+          </a>
+        </li>
+        <li class=""> 
+          <a href="/u/<?= $user->seo_user??''?>/lab-news"> 
+            <i class="fa fa-magnet"></i>
+            <span>Equipment Request</span>
           </a>
         </li>
         <?php endif;?>
@@ -242,7 +262,7 @@
 <script src="/assets/user/dist/plugins/morris/morris.js"></script>
 <script src="/assets/user/dist/plugins/functions/morris-init.js"></script>
 
-<?php if (isset($edit_avatar) || isset($input_image)) : ?>
+<?php if (isset($edit_avatar) || isset($input_image) || isset($input_file)) : ?>
 <script src="/assets/user/dist/plugins/dropify/dropify.min.js"></script> 
 <script>
     $(document).ready(function(){
@@ -334,6 +354,5 @@
 <script src="/assets/user/dist/plugins/bootstrap-switch/highlight.js"></script> 
 <script src="/assets/user/dist/plugins/bootstrap-switch/main.js"></script>
 <?php endif; ?>
-
 </body>
 </html>

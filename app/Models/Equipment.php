@@ -22,6 +22,16 @@ class Equipment extends Model {
   public $updated_at;
   public $created_by;
   public $updated_by;
+
+  public static function findById(string $id): ?Equipment {
+    $db = App::get('database');
+    $result = $db->fetch(
+      'SELECT * FROM equipments WHERE id = ?', 
+      [$id],
+      static::class
+    );
+    return $result ? $result : null;
+  }
   
   public static function findAll(): array {
     $db = App::get('database');
