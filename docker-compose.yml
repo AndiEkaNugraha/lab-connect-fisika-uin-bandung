@@ -1,7 +1,7 @@
 services:
   app:
-    image: labConnect
-    container_name: labConnect
+    image: lab-connect
+    container_name: lab-connect
     restart: always
     expose:
       - "8002"  # Aplikasi tetap berjalan di port 8002
