@@ -1,5 +1,6 @@
 services:
   app:
+    build: .
     image: lab-connect
     container_name: lab-connect
     restart: always
@@ -16,9 +17,9 @@ services:
       - "80:80"    # Untuk HTTP
       - "443:443"  # Untuk HTTPS
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./certs:/etc/ssl/certs
-      - ./certs:/etc/ssl/private
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/ssl/certs:ro
+      - ./certs:/etc/ssl/private:ro
     depends_on:
       - app
     networks:
