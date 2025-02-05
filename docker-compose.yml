@@ -1,10 +1,31 @@
-version: '3.8'
+version: '3'
 
 services:
   app:
-    build: .
-    ports:
-      - "8002:8002"
-    volumes:
-      - .:/var/www/html
+    image: codeigniter_app
+    container_name: codeigniter_app
     restart: always
+    expose:
+      - "8002"  # Aplikasi tetap berjalan di port 8002
+    networks:
+      - app_network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    restart: always
+    ports:
+      - "80:80"    # Untuk HTTP
+      - "443:443"  # Untuk HTTPS
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/ssl/certs
+      - ./certs:/etc/ssl/private
+    depends_on:
+      - app
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
