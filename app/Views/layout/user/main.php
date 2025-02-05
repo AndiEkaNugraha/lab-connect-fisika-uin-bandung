@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Niche Admin - Powerful Bootstrap 4 Dashboard and Admin Template</title>
+<title>Lab Fisika</title>
+<meta name="description" content="Labolatorium Fisika Universitas Islam Negeri Sunan Gunung Djati">
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
 
@@ -77,7 +78,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-envelope-o"></i>
+          <!-- <li class="dropdown messages-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-envelope-o"></i>
             <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
             </a>
             <ul class="dropdown-menu">
@@ -112,9 +113,9 @@
               </li>
               <li class="footer"><a href="#">View All Messages</a></li>
             </ul>
-          </li>
+          </li> -->
           <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown messages-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-bell-o"></i>
+          <!-- <li class="dropdown messages-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-bell-o"></i>
             <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
             </a>
             <ul class="dropdown-menu">
@@ -149,7 +150,7 @@
               </li>
               <li class="footer"><a href="#">Check all Notifications</a></li>
             </ul>
-          </li>
+          </li> -->
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu p-ph-res"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="<?= $user->avatar? '/assets/file/avatar/'. $user->avatar : '/assets/img/profile-default.jpg'  ?>" class="user-image" alt="User Image"> <span class="hidden-xs"><?= $user->name??'' ?></span> </a>
             <ul class="dropdown-menu">
@@ -161,11 +162,11 @@
                 <p class="text-left"><?= $user->name??'' ?><small><?= $user->email??'' ?></small> </p>
               </li>
               <li><a href="/u/<?= $user->seo_user??'' ?>/profile"><i class="icon-profile-male"></i> My Profile</a></li>
-              <li><a href="#"><i class="icon-wallet"></i> My Balance</a></li>
+              <!-- <li><a href="#"><i class="icon-wallet"></i> My Balance</a></li>
               <li><a href="#"><i class="icon-envelope"></i> Inbox</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="#"><i class="icon-gears"></i> Account Setting</a></li>
-              <li role="separator" class="divider"></li>
+              <li role="separator" class="divider"></li> -->
               <li><a href="/logout"><i class="fa fa-power-off"></i> Logout</a></li>
             </ul>
           </li>

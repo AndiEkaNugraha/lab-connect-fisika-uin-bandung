@@ -268,3 +268,14 @@
 [2025-02-05 07:33:17] Error: ErrorException: Undefined variable $reservation in C:\Storage\prj\LabConnect\labConnect\app\Views\user\requester\labDetailReservation\index.php on line 222
 [2025-02-05 10:00:10] Error: ErrorException: Undefined variable $reservation in C:\Storage\prj\LabConnect\labConnect\app\Views\user\requester\labDetailReservation\index.php on line 68
 [2025-02-05 10:09:54] Error: ParseError: syntax error, unexpected token "endif", expecting end of file in C:\Storage\prj\LabConnect\labConnect\app\Views\user\approver\labDetailReservation\index.php on line 119
+[2025-02-05 13:18:34] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:18:35] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:18:51] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:18:54] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:19:20] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:20:12] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:21:07] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:22:26] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:22:27] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:22:27] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
+[2025-02-05 13:22:28] Error: TypeError: Core\Model::find(): Return value must be of type ?App\Models\User, bool returned in C:\Storage\prj\LabConnect\labConnect\core\Model.php on line 50
