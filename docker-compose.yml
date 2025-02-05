@@ -2,8 +2,8 @@ version: '3'
 
 services:
   app:
-    image: codeigniter_app
-    container_name: codeigniter_app
+    image: labConnect
+    container_name: labConnect
     restart: always
     expose:
       - "8002"  # Aplikasi tetap berjalan di port 8002
