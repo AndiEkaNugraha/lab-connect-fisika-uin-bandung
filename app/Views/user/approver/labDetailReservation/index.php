@@ -16,10 +16,9 @@
         <div id="demo1">
           <div class="step-app">
             <ul class="step-steps">
-              <li><a href="#tab1"><span class="number">1</span> Request</a></li>
-              <li><a href="#tab2"><span class="number">2</span> Job Status</a></li>
-              <li><a href="#tab3"><span class="number">3</span> Interview</a></li>
-              <li><a href="#tab4"><span class="number">4</span> Remark</a></li>
+            <li class=""><a href="#tab1" style="height:100%"><div class="number">1</div> <span class="d-none d-md-inline">Request</span></a></li>
+            <li class=""><a href="#tab2" style="height:100%"><div class="number">2</div> <span class="d-none d-md-inline">Before</span></a></li>
+            <li class=""><a href="#tab3" style="height:100%"><div class="number">3</div> <span class="d-none d-md-inline">After</span></a></li>
             </ul>
             <div class="step-content">
               <div class="step-tab-panel" id="tab1">
@@ -76,25 +75,36 @@
               </div>
               <!-------------------------------- tab 2 -------------------------------->
               <div class="step-tab-panel" id="tab2">
-                <h3>Tab2</h3>
-                <form name="frmInfo" id="frmInfo">
+                <form name="frmBefore" id="frmBefore">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label class="mt-4"><strong>Conditions before using the laboratory</strong></label>
+                        <p>Input the condition of the room before using it, such as describing the condition of the room, providing image descriptions, and so on that support the explanation</p>
+                        <div id="summernoteBefore"><?= $reservation->reservation_descBefore??'' ?></div>
+                      </div>
+                    </div>
+                  </div>  
                 </form>
               </div>
+              <!-------------------------------- tab 3 -------------------------------->
               <div class="step-tab-panel" id="tab3">
-                <h3>Tab3</h3>
-                <form name="frmLogin" id="frmLogin">
-                </form>
-              </div>
-              <div class="step-tab-panel" id="tab4">
-                <h3>Tab4</h3>
-                <form name="frmMobile" id="frmMobile">
+                <form name="frmAfter" id="frmAfter">
+                <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label class="mt-4"><strong>Conditions After using the laboratory</strong></label>
+                        <p>Input the condition of the room after using it, such as describing the condition of the room, providing image descriptions, and so on that support the explanation</p>
+                        <div id="summernoteAfter"><?= $reservation->reservation_descAfter??'' ?></div>
+                      </div>
+                    </div>
+                  </div>  
                 </form>
               </div>
             </div>
             <div class="step-footer">
               <button data-direction="prev" class="btn btn-light">Previous</button>
               <button data-direction="next" class="btn btn-primary">Next</button>
-              <button data-direction="finish" class="btn btn-primary">Submit</button>
             </div>
           </div>
         </div>
@@ -132,27 +142,54 @@
                       </div>
                   </div>
                 <?php endif; ?>
-                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 1): ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 2): ?>
                   <div class="sl-item sl-danger">
                       <div class="sl-content">
                         <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
                         <p>Cancelled</p>
+                        <p><?= $reservation->reservation_note ?></p>
                       </div>
                   </div>
                 <?php endif; ?>
-                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 2): ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 1): ?>
                   <div class="sl-item sl-danger">
                       <div class="sl-content">
                         <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$approver->name??''?></small>
                         <p>Reject</p>
+                        <p><?= $reservation->reservation_note ?></p>
                       </div>
                   </div>
                 <?php endif; ?>
-                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 3): ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status >= 3): ?>
                   <div class="sl-item sl-success">
                       <div class="sl-content">
                         <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$approver->name??''?></small>
                         <p>Approve</p>
+                        <p><?= $reservation->reservation_note ?></p>
+                      </div>
+                  </div>
+                <?php endif; ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status >= 4): ?>
+                  <div class="sl-item sl-primary">
+                      <div class="sl-content">
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
+                        <p>Use the facilities</p>
+                      </div>
+                  </div>
+                <?php endif; ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status >= 5): ?>
+                  <div class="sl-item sl-primary">
+                      <div class="sl-content">
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
+                        <p>Get ready to leave the room</p>
+                      </div>
+                  </div>
+                <?php endif; ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status >= 6): ?>
+                  <div class="sl-item sl-success">
+                      <div class="sl-content">
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
+                        <p>Finish using the facilities</p>
                       </div>
                   </div>
                 <?php endif; ?>
@@ -165,7 +202,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="location1">Approval</label>
-                <select <?php if (isset($reservation) && $reservation->reservation_status == 1) echo "disabled"; ?> class="custom-select form-control" id="location1" name="approval">
+                <select <?php if (isset($reservation) && ($reservation->reservation_status == 2 || $reservation->reservation_status > 3)) echo "disabled"; ?> class="custom-select form-control" id="location1" name="approval">
                     <option value="3">approve</option>
                     <option value="1">reject</option>
                 </select>
@@ -175,12 +212,12 @@
             <div class="col">
               <div class="form-group">
                 <label for="end">Note :</label>
-                <textarea value="<?= $reservation->reservation_note??'' ?>" class="form-control" id="note" name="note"><?= $reservation->reservation_note??'' ?></textarea>
+                <textarea <?php if (isset($reservation) && ($reservation->reservation_status == 2 || $reservation->reservation_status > 3)) echo "disabled"; ?> value="<?= $reservation->reservation_note??'' ?>" class="form-control" id="note" name="note"><?= $reservation->reservation_note??'' ?></textarea>
               </div>
             </div>
             <div class="col" style="text-align: right">
-              <button type="submit" class="btn btn-success me-auto">Save</button>
-            </div>
+              <button <?php if (isset($reservation) && ($reservation->reservation_status == 2 || $reservation->reservation_status > 3)) echo "disabled"; ?> type="submit" class="btn btn-success me-auto">Save</button>
+            </div> 
           </form>
       </div>
       <!-- Main row --> 
@@ -196,28 +233,27 @@
     var frmReq = $('#frmReq');
     var frmReqValidator = frmReq.validate();
 	
-    var frmInfo = $('#frmInfo');
-    var frmInfoValidator = frmInfo.validate();
+    var frmBefore = $('#frmBefore');
+    var frmBeforeValidator = frmBefore.validate();
 
-    var frmLogin = $('#frmLogin');
-    var frmLoginValidator = frmLogin.validate();
-
-    var frmMobile = $('#frmMobile');
-    var frmMobileValidator = frmMobile.validate();
+    var frmAfter = $('#frmAfter');
+    var frmAfterValidator = frmAfter.validate();
 
     $('#demo1').steps({
       onChange: function (currentIndex, newIndex, stepDirection) {
-        console.log('onChange', currentIndex, newIndex, stepDirection);
         // tab1
         if (currentIndex === 0) {
           if (stepDirection === 'forward') {
             var valid = frmReq.valid();
-            <?php if (isset($reservation) && $reservation->reservation_status >=2) {
-                    ?>return valid;<?php
-                }else {
-                    ?>return showAlert('danger', 'The application has not been approved');<?php
-                }
-            ?>
+            <?php if (isset($reservation) && $reservation->reservation_status >2) { ?>
+                return valid;
+            <?php } elseif (isset($reservation) && $reservation->reservation_status == 2) { ?>
+                return showAlert('danger', 'The application has cancelled');
+            <?php } elseif (isset($reservation) && $reservation->reservation_status == 1) { ?>
+                return showAlert('danger', 'The application has rejected');
+            <?php } else {?>
+                return showAlert('danger', 'The application has not been approved');
+            <?php } ?>
             
             // return valid;
           }
@@ -229,41 +265,34 @@
 		// tab2
         if (currentIndex === 1) {
           if (stepDirection === 'forward') {
-            var valid = frmInfo.valid();
-            return valid;
+            var valid = frmBefore.valid();
+            <?php if (isset($reservation) && $reservation->reservation_status >3) { ?>
+                return valid;
+            <?php } elseif (isset($reservation) && $reservation->reservation_status == 3) { ?>
+                return showAlert('danger', 'Save conditions before using the laboratory');
+            <?php } ?>
           }
           if (stepDirection === 'backward') {
-            frmInfoValidator.resetForm();
+            frmBeforeValidator.resetForm();
           }
         }
 
         // tab3
         if (currentIndex === 2) {
           if (stepDirection === 'forward') {
-            var valid = frmLogin.valid();
+            var valid = frmAfter.valid();
             return valid;
           }
           if (stepDirection === 'backward') {
-            frmLoginValidator.resetForm();
+            frmAfterValidator.resetForm();
           }
         }
-
-        // tab4
-        if (currentIndex === 3) {
-          if (stepDirection === 'forward') {
-            var valid = frmMobile.valid();
-            return valid;
-          }
-          if (stepDirection === 'backward') {
-            frmMobileValidator.resetForm();
-          }
-        }
-
+        
         return true;
 
       },
       onFinish: function () {
-        alert('Wizard Completed');
+        submitForms(5);
       }
     });
 </script>

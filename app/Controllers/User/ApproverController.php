@@ -29,14 +29,17 @@ class ApproverController {
     }
     public function detailReservationLab($user_seo, $reservation_id) {
         Authorization::verify('approver');
-        $reservation = labReservation::getReservationById($reservation_id);
         $listLab = Lab::findAll()??[];
+        $user = Auth::user();
+        $reservation = labReservation::getReservationById($reservation_id);
+        if ($reservation == null) {
+            Router::redirect('/u/'.$user->seo_user.'/reservation-lab');
+        }
         $Requester = User::findById($reservation->user_id);
         $Approver = null;
         if ($reservation->reservation_approver != null && $reservation->reservation_approver != '') {
             $Approver = User::findById($reservation->reservation_approver);
         }
-        $user = Auth::user();
         return View::render(
             template:'user/approver/labDetailReservation/index', 
             data:[
@@ -47,11 +50,11 @@ class ApproverController {
                 'datatabel' => true,
                 'alert'=> true,
                 'stepRequest' => true,
-                'reservation' => $reservation,
-                'users' => $user,
+                'user' => $user,	
                 'listLab' => $listLab,
-                'requester' => $Requester,
-                'approver' => $Approver
+                'reservation' => $reservation,
+                'approver' => $Approver,
+                'requester' => $Requester
             ],
             layout: 'layout/user/main'
         );

@@ -120,7 +120,8 @@ class LabSubmissionController {
         $start = $_POST['start']??null;
         $end = $_POST['end']??null;
         $desc = $_POST['desc']??'';
-        $status = null;
+        $status = $_POST['status']??'';
+        $note = $_POST['note']??null;
         $descBefore = $_POST['descBefore']??null;
         $descAfter = $_POST['descAfter']??null;
         $fileStudent = null;
@@ -155,9 +156,28 @@ class LabSubmissionController {
         $reservation->reservation_descBefore = $descBefore??$reservation->reservation_descBefore;
         $reservation->reservation_descAfter = $descAfter??$reservation->reservation_descAfter;
         $reservation->updated_by = $user->id;
+        $reservation->reservation_note = $note??$reservation->reservation_note;
         $reservation->updated_at = date('Y-m-d H:i:s');
         $reservation->save();
         $response['success'] = true;
+        if ($status == 2) {
+            return Router::redirect( '/u/'.$user->seo_user.'/reservation-lab');
+        }
         return json_encode($response);
+    }
+    public function cancelReservation ($user_seo, $reservation_id) {
+        Authorization::verify('reservation');
+        $status = 2;
+        $note = $_POST['note']??null;
+        $reservation = labReservation::getReservationById($reservation_id);
+        $user = Auth::user();
+        if ($reservation == null) {
+            return Router::redirect('/u/'.$user->seo_user.'/reservation-lab');
+        }
+        $reservation->reservation_note = $note??$reservation->reservation_note;
+        $reservation->updated_by = $user->id;
+        $reservation->reservation_status = $status??$reservation->reservation_status;
+        $reservation->save();
+        return Router::redirect('/u/'.$user->seo_user.'/reservation-lab');
     }
 }

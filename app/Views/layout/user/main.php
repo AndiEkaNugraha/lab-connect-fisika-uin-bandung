@@ -359,7 +359,7 @@
           maxHeight: null, // set maximum height of editor
           focus: false // set focus to editable area after initializing summernote
     });
-    <?php if (isset($reservation) && $reservation->reservation_status == 6){ ?>
+    <?php if (isset($reservation) && ($reservation->reservation_status == 6 || $user->cat_id == 2)){ ?>
       $('#summernoteBefore').summernote('disable');
       $('#summernoteAfter').summernote('disable');
     <?php } ?>

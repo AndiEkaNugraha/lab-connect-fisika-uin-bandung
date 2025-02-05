@@ -72,7 +72,23 @@
                       ?>
                     </td>
                     <td class="text-center">
-                      <?= $reservation->reservation_status ?>
+                      <?php 
+                          $statusLabels = [
+                              0 => ['text' => 'Reservation', 'class' => 'badge-warning"'],
+                              1 => ['text' => 'Rejected', 'class' => 'badge-danger'],
+                              2 => ['text' => 'Cancelled', 'class' => 'badge-danger'],
+                              3 => ['text' => 'Approved', 'class' => 'badge-success'],
+                              4 => ['text' => 'In Use', 'class' => 'badge-info'],
+                              5 => ['text' => 'Preparing to Leave', 'class' => 'badge-info'],
+                              6 => ['text' => 'Completed', 'class' => 'badge-primary'],
+                          ];
+
+                          if (isset($statusLabels[$reservation->reservation_status])) {
+                              echo '<span class="badge ' . $statusLabels[$reservation->reservation_status]['class'] . '">' 
+                                  . $statusLabels[$reservation->reservation_status]['text'] . 
+                                  '</span>';
+                          }
+                        ?>
                     </td>
                     <td class="text-center">
                       <a href="/u/<?= $user->seo_user??'' ?>/lab-reservation/<?= $reservation->id ?>"><i class="fa fa-pencil-square-o"></i></a>

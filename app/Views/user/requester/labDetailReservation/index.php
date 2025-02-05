@@ -65,7 +65,7 @@
                     <div class="col-md-5">
                         <div class="form-group">
                         <label for="end">Input Student :</label>
-                        <input <?php if (isset($reservation) && $reservation->reservation_status == 6) echo "disabled"; ?> onchange="handleFile(event)" accept=".xls, .xlsx" type="file" name="student" id="input-file-max-fs" class="dropify" data-max-file-size="1M" <?= isset($reservation->reservation_listUser)? 'data-default-file= /assets/file/labReservation/'.$reservation->reservation_listUser:'' ?> />
+                        <input <?php if (isset($reservation) && ($reservation->reservation_status == 6 || $reservation->reservation_status == 2)) echo "disabled"; ?> onchange="handleFile(event)" accept=".xls, .xlsx" type="file" name="student" id="input-file-max-fs" class="dropify" data-max-file-size="1M" <?= isset($reservation->reservation_listUser)? 'data-default-file= /assets/file/labReservation/'.$reservation->reservation_listUser:'' ?> />
                         <input type="text" name="student" value="" hidden>
                         <small class=""><a href="/assets/file/labReservation/example/example-template.xlsx">Download template here!</a></small>
                       </div>
@@ -104,16 +104,16 @@
             </div>
             <div class="step-footer">
               <button data-direction="prev" class="btn btn-light">Previous</button>
-              <button type="button" class="btn btn-success me-auto" onclick="submitForms()">Save</button>
+              <button <?php if (isset($reservation->reservation_status) && ($reservation->reservation_status == 2 || $reservation->reservation_status == 6)) echo "disabled"; ?> type="button" class="btn btn-success me-auto" onclick="submitForms()">Save</button>
               <button data-direction="next" class="btn btn-light">Next</button>
-              <button data-direction="finish" class="btn btn-primary">Submit</button>
+              <button <?php if (isset($reservation->reservation_status) && ($reservation->reservation_status == 2 || $reservation->reservation_status == 6)) echo "disabled"; ?> data-direction="finish" class="btn btn-primary">Submit</button>
             </div>
           </div>
         </div>
       </div>
       <div class="card mt-4">
         <div class="card-body d-grid d-xl-flex" style="gap: 50px">
-            <div class="table-responsive col-12 col-xl-8">
+            <div class=" col-12 col-xl-8">
                 <table id="example2" class="table table-bordered" data-name="cool-table">
                     <thead>
                     <tr>
@@ -125,8 +125,18 @@
                     </tbody>
                 </table>
             </div>
-
-            <div class="info-box" style="max-width: 500px">
+                            
+            <div class="mt-4 mt-xl-0" style="max-width: 500px">
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status < 3): ?>
+                <form method="POST" class="form-group">
+                  <?= csrf_token() ?>
+                  <label>Cancel using the facility?</label>
+                  <textarea <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 2) echo "disabled"; ?>  name="note" class="form-control" id="placeTextarea" rows="3" placeholder="Input your reason"></textarea>
+                  <input  type="text" value="2" name="status" hidden>
+                  <button <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 2) echo "disabled"; ?> type="submit" class="btn btn-danger btn-sm mt-2">Cancel</button>
+                </form>
+                <hr>
+                <?php endif; ?>
                 <h4 class="m-b-2 text-black">Status</h4>
                 <?php if (isset($stepRequest)): ?>
                   <div class="sl-item sl-primary">
@@ -144,7 +154,7 @@
                       </div>
                   </div>
                 <?php endif; ?>
-                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 1): ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 2): ?>
                   <div class="sl-item sl-danger">
                       <div class="sl-content">
                         <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
@@ -153,7 +163,7 @@
                       </div>
                   </div>
                 <?php endif; ?>
-                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 2): ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 1): ?>
                   <div class="sl-item sl-danger">
                       <div class="sl-content">
                         <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$approver->name??''?></small>
@@ -174,7 +184,7 @@
                 <?php if (isset($reservation->reservation_status) && $reservation->reservation_status >= 4): ?>
                   <div class="sl-item sl-primary">
                       <div class="sl-content">
-                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$approver->name??''?></small>
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
                         <p>Use the facilities</p>
                       </div>
                   </div>
@@ -182,7 +192,7 @@
                 <?php if (isset($reservation->reservation_status) && $reservation->reservation_status >= 5): ?>
                   <div class="sl-item sl-primary">
                       <div class="sl-content">
-                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$approver->name??''?></small>
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
                         <p>Get ready to leave the room</p>
                       </div>
                   </div>
@@ -190,7 +200,7 @@
                 <?php if (isset($reservation->reservation_status) && $reservation->reservation_status >= 6): ?>
                   <div class="sl-item sl-success">
                       <div class="sl-content">
-                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$approver->name??''?></small>
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
                         <p>Finish using the facilities</p>
                       </div>
                   </div>
@@ -310,9 +320,9 @@
             var valid = frmReq.valid();
             <?php if (isset($reservation) && $reservation->reservation_status >2) { ?>
                 return valid;
-            <?php } elseif (isset($reservation) && $reservation->reservation_status == 1) { ?>
-                return showAlert('danger', 'The application has cancelled');
             <?php } elseif (isset($reservation) && $reservation->reservation_status == 2) { ?>
+                return showAlert('danger', 'The application has cancelled');
+            <?php } elseif (isset($reservation) && $reservation->reservation_status == 1) { ?>
                 return showAlert('danger', 'The application has rejected');
             <?php } else {?>
                 return showAlert('danger', 'The application has not been approved');
