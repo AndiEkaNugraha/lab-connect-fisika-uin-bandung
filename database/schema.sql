@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS categoriesUsers;
 DROP TABLE IF EXISTS remember_tokens;
 DROP TABLE IF EXISTS labs;
 DROP TABLE IF EXISTS equipments;
+DROP TABLE IF EXISTS reservationsLab;
 
 CREATE TABLE IF NOT EXISTS users (
     id TEXT PRIMARY KEY DEFAULT (
@@ -101,4 +102,33 @@ CREATE TABLE IF NOT EXISTS equipments (
     updated_by TEXT,
 
     FOREIGN KEY (lab_id) REFERENCES labs(id)
+)WITHOUT ROWID;
+
+CREATE TABLE IF NOT EXISTS reservationsLab (
+    id TEXT PRIMARY KEY DEFAULT (
+        substr(hex(randomblob(4)), 1, 8) || '-' ||
+        substr(hex(randomblob(2)), 1, 4) || '-' ||
+        '4' || substr(hex(randomblob(2)), 2, 3) || '-' ||
+        substr('89ab', abs(random()) % 4 + 1, 1) || substr(hex(randomblob(2)), 2, 3) || '-' ||
+        substr(hex(randomblob(6)), 1, 12)
+    ),
+    lab_id TEXT NOT NULL,
+    user_id TEXT NOT NULL,
+    reservation_desc VARCHAR DEFAULT [],
+    reservation_listUser VARCHAR DEFAULT [],
+    reservation_start TEXT,
+    reservation_end TEXT,
+    reservation_approver TEXT,
+    reservation_cancel TEXT,
+    reservation_note TEXT,
+    reservation_status TEXT,
+    reservation_descBefore TEXT,
+    reservation_descAfter TEXT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by TEXT,
+    updated_by TEXT,
+
+    FOREIGN KEY (lab_id) REFERENCES labs(id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 )WITHOUT ROWID;

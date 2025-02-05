@@ -45,6 +45,9 @@
 <?php if (isset($edit_longForm) || isset($input_longText)) : ?>
 <link rel="stylesheet" href="/assets/user/dist/plugins/summernote/summernote-bs4.css">
 <?php endif; ?>
+<?php if (isset($descRequest)) : ?>
+<link rel="stylesheet" href="/assets/user/dist/plugins/summernote/summernote-bs4.css">
+<?php endif; ?>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -222,9 +225,24 @@
           </a>
         </li>
         <li class=""> 
-          <a href="/u/<?= $user->seo_user??''?>/lab-news"> 
+          <a href="/u/<?= $user->seo_user??''?>/reservation-equipment"> 
             <i class="fa fa-magnet"></i>
             <span>Equipment Request</span>
+          </a>
+        </li>
+        <?php endif;?>
+        <?php if(check('approver')): ?>
+        <li class="header">Request</li>
+        <li class=""> 
+          <a href="/u/<?= $user->seo_user??''?>/lab-reservation"> 
+            <i class="fa fa-map-marker"></i>
+            <span>Lab Reservation</span>
+          </a>
+        </li>
+        <li class=""> 
+          <a href="/u/<?= $user->seo_user??''?>/equipment-reservation"> 
+          <i class="fa fa-magnet"></i>
+            <span>Equipment Reservation</span>
           </a>
         </li>
         <?php endif;?>
@@ -312,7 +330,7 @@
 <script> 
     $('#summernote').summernote({
           height: 300, // set editor height
-          placeholder: 'Input your content here',
+          placeholder: 'Input description here',
           minHeight: null, // set minimum height of editor
           maxHeight: null, // set maximum height of editor
           focus: false // set focus to editable area after initializing summernote
@@ -321,6 +339,30 @@
         var bioContent = $('#summernote').summernote('code'); // Ambil isi Summernote
         $('input[name="descLong"]').val(bioContent); // Masukkan ke dalam input hidden
     });
+</script>
+<?php endif; ?>
+
+<?php if (isset($descRequest)) : ?>
+<script src="/assets/user/dist/plugins/summernote/summernote-bs4.js"></script> 
+<script> 
+    $('#summernoteBefore').summernote({
+          height: 300, // set editor height
+          placeholder: 'Input description here',
+          minHeight: null, // set minimum height of editor
+          maxHeight: null, // set maximum height of editor
+          focus: false // set focus to editable area after initializing summernote
+    });
+    $('#summernoteAfter').summernote({
+          height: 300, // set editor height
+          placeholder: 'Input description here',
+          minHeight: null, // set minimum height of editor
+          maxHeight: null, // set maximum height of editor
+          focus: false // set focus to editable area after initializing summernote
+    });
+    <?php if (isset($reservation) && $reservation->reservation_status == 6){ ?>
+      $('#summernoteBefore').summernote('disable');
+      $('#summernoteAfter').summernote('disable');
+    <?php } ?>
 </script>
 <?php endif; ?>
 

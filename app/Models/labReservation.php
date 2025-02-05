@@ -44,4 +44,14 @@ class labReservation extends Model {
     );
     return $result ? $result : null;
   }
+
+  public static function listReservation (): array {
+    $db = App::get('database');
+    $result = $db->fetchAll(
+      'SELECT * FROM reservationsLab', 
+      [],
+      static::class
+    );
+    return $result ? $result : [];
+  }
 }

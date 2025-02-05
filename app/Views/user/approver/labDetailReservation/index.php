@@ -28,7 +28,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="location1">Select labolatory :</label>
-                        <select class="custom-select form-control" id="location1" name="labolatory">
+                        <select disabled class="custom-select form-control" id="location1" name="labolatory">
                             <option disabled value="">Select labolatory</option>
                             <?php if (!empty($listLab)): 
                                 foreach($listLab as $labExisting): ?>
@@ -44,13 +44,13 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="start">Start Time :</label>
-                        <input value="<?= $reservation->reservation_start??'' ?>" class="form-control" id="start" type="datetime-local" name="start">
+                        <input disabled value="<?= $reservation->reservation_start??'' ?>" class="form-control" id="start" type="datetime-local" name="start">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="end">End Time :</label>
-                        <input value="<?= $reservation->reservation_end??'' ?>" class="form-control" id="end" type="datetime-local" name="end">
+                        <input disabled value="<?= $reservation->reservation_end??'' ?>" class="form-control" id="end" type="datetime-local" name="end">
                       </div>
                     </div>
                   </div>
@@ -58,7 +58,7 @@
                     <div class="col">
                       <div class="form-group">
                         <label for="end">Description :</label>
-                        <textarea value="<?= $reservation->reservation_desc??'' ?>" class="form-control" id="desc" name="desc"><?= $reservation->reservation_desc??'' ?></textarea>
+                        <textarea disabled value="<?= $reservation->reservation_desc??'' ?>" class="form-control" id="desc" name="desc"><?= $reservation->reservation_desc??'' ?></textarea>
                       </div>
                     </div>
                   </div>
@@ -67,8 +67,7 @@
                     <div class="col-md-5">
                         <div class="form-group">
                         <label for="end">Input Student :</label>
-                        <input onchange="handleFile(event)" accept=".xls, .xlsx" type="file" name="student" id="input-file-max-fs" class="dropify" data-max-file-size="1M" <?= isset($reservation->reservation_listUser)? 'data-default-file= /assets/file/labReservation/'.$reservation->reservation_listUser:'' ?> />
-                        <input type="text" name="student" value="" hidden>
+                        <input disabled onchange="handleFile(event)" accept=".xls, .xlsx" type="file" name="student" id="input-file-max-fs" class="dropify" data-max-file-size="1M" <?= isset($reservation->reservation_listUser)? 'data-default-file= /assets/file/labReservation/'.$reservation->reservation_listUser:'' ?> />
                         <small class=""><a href="/assets/file/labReservation/example/example-template.xlsx">Download template here!</a></small>
                       </div>
                     </div>
@@ -93,7 +92,6 @@
               </div>
             </div>
             <div class="step-footer">
-              <button type="button" class="btn btn-success me-auto" onclick="submitForms()">Save</button>
               <button data-direction="prev" class="btn btn-light">Previous</button>
               <button data-direction="next" class="btn btn-primary">Next</button>
               <button data-direction="finish" class="btn btn-primary">Submit</button>
@@ -120,82 +118,76 @@
                 <h4 class="m-b-2 text-black">Status</h4>
                 <?php if (isset($stepRequest)): ?>
                   <div class="sl-item sl-primary">
-                      <div class="sl-content"><small class="text-muted"><i class="fa fa-user position-left"></i> <?=$user->name??''?></small>
-                          <p>Make a reservation</p>
+                      <div class="sl-content">
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
+                        <p>Make a reservation</p>
                       </div>
                   </div>
                 <?php endif; ?>
                 <?php if (isset($reservation)): ?>
                   <div class="sl-item sl-primary">
-                      <div class="sl-content"><small class="text-muted"><i class="fa fa-user position-left"></i> <?=$user->name??''?></small>
-                          <p>Reservation made</p>
+                      <div class="sl-content">
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
+                        <p>Reservation made</p>
+                      </div>
+                  </div>
+                <?php endif; ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 1): ?>
+                  <div class="sl-item sl-danger">
+                      <div class="sl-content">
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$requester->name??''?></small>
+                        <p>Cancelled</p>
+                      </div>
+                  </div>
+                <?php endif; ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 2): ?>
+                  <div class="sl-item sl-danger">
+                      <div class="sl-content">
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$approver->name??''?></small>
+                        <p>Reject</p>
+                      </div>
+                  </div>
+                <?php endif; ?>
+                <?php if (isset($reservation->reservation_status) && $reservation->reservation_status == 3): ?>
+                  <div class="sl-item sl-success">
+                      <div class="sl-content">
+                        <small class="text-muted"><i class="fa fa-user position-left"></i> <?=$approver->name??''?></small>
+                        <p>Approve</p>
                       </div>
                   </div>
                 <?php endif; ?>
             </div>
         </div>
       </div>
+      <div class="card mt-4">
+          <form method="POST" id="approval" class="card-body">
+            <?= csrf_token() ?>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="location1">Approval</label>
+                <select <?php if (isset($reservation) && $reservation->reservation_status == 1) echo "disabled"; ?> class="custom-select form-control" id="location1" name="approval">
+                    <option value="3">approve</option>
+                    <option value="1">reject</option>
+                </select>
+                <small class="text-danger"><?= ($error_approver?? "") ?></small>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="end">Note :</label>
+                <textarea value="<?= $reservation->reservation_note??'' ?>" class="form-control" id="note" name="note"><?= $reservation->reservation_note??'' ?></textarea>
+              </div>
+            </div>
+            <div class="col" style="text-align: right">
+              <button type="submit" class="btn btn-success me-auto">Save</button>
+            </div>
+          </form>
+      </div>
       <!-- Main row --> 
     </div>
     <!-- /.content --> 
   </div>
   <!-- /.content-wrapper -->
-
-<!-- submit form -->
-<script>
-    var csrfToken = '<?= csrf_token_value() ?>';
-    function submitForms() {
-        const form = document.getElementById('frmReq');
-        const formData = new FormData(form);
-        formData.append('_token', csrfToken);
-
-        const startInput = document.getElementById('start').value;
-        const endInput = document.getElementById('end').value;
-
-        // Validasi apakah input kosong
-        if (startInput === '' || endInput === '') {
-            showAlert('danger', 'Start time and end time are required.');
-            return; // Hentikan proses jika salah satu kosong
-        }
-
-        const startTime = new Date(startInput);
-        const endTime = new Date(endInput);
-        const currentTime = new Date();
-        if (startTime < currentTime) {
-            showAlert('danger', 'Start time cannot be in the past.');
-            return; // Hentikan submit jika tidak valid
-        }
-
-        if (endTime <= startTime) {
-            showAlert('danger', 'End time must be greater than start time.');
-            return;
-        }
-        <?php if (isset($reservation)){ ?>
-          const url = '/u/<?=$user->seo_user?>/reservation-lab/<?=$reservation->id?>';	
-        <?php 
-        } else { ?>
-          const url = '/u/<?=$user->seo_user?>/reservation-lab/create';
-        <?php } ?>
-        fetch(url, {
-        method: 'POST',
-        body: formData // Kirim sebagai form data
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          showAlert('success', 'Reservation save successful .');
-          setTimeout(() => window.location.href = '/u/<?= $user->seo_user??'' ?>/reservation-lab', 1000); // Reload halaman setelah sukses
-        } else {
-          showAlert('danger', 'Reservation save failed, make sure your data is correct.');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        showAlert('danger', 'An error occurred on the server.');
-      });
-    }
-
-</script>
 
 <!-- form wizard --> 
 <script src="/assets/user/dist/plugins/formwizard/jquery-steps.js"></script> 

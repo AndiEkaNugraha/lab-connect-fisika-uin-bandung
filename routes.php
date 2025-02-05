@@ -48,5 +48,9 @@ $router->add('POST', '/u/{user_seo}/reservation-lab/create', 'User\labSubmission
 $router->add('GET', '/u/{user_seo}/reservation-lab/{reservation_id}', 'User\labSubmissionController@editReservation', ['auth']);
 $router->add('POST', '/u/{user_seo}/reservation-lab/{reservation_id}', 'User\labSubmissionController@updateReservation', ['auth']);
 
+$router->add('GET', '/u/{user_seo}/lab-reservation', 'User\ApproverController@listReservationLab', ['auth']);
+$router->add('GET', '/u/{user_seo}/lab-reservation/{reservation_id}', 'User\ApproverController@detailReservationLab', ['auth']);
+$router->add('POST', '/u/{user_seo}/lab-reservation/{reservation_id}', 'User\ApproverController@updateReservationLab', ['auth']);
+
 $router->add('GET', '/u/{user_seo}/lab-news', 'User\NewsController@listNews', ['auth']);
 

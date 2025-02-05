@@ -7,15 +7,16 @@ use Core\Router;
 use App\Services\Auth;
 use App\Models\labReservation;
 use App\Models\Lab;
+use App\Models\User;
 
-class labSubmissionController {
+class LabSubmissionController {
     public function listReservation ($user_seo)  {
         Authorization::verify('reservation');
         $user = Auth::user();
         $listReservation = labReservation::listRequest_student($user->id);
         $labolatory = Lab::findAll()??[];
         return View::render(
-            template:'user/submission/labReservation/index', 
+            template:'user/requester/labReservation/index', 
             data:[
                 'datatabel' => true,
                 'alert'=> true,
@@ -31,11 +32,11 @@ class labSubmissionController {
         $listLab = Lab::findAll()??[];
         $user = Auth::user();
         return View::render(
-            template:'user/submission/labDetailReservation/index', 
+            template:'user/requester/labDetailReservation/index', 
             data:[
                 'formWizzard' => true,
                 'submission' => true,
-                'input_longText' => true,
+                'descRequest' => true,
                 'input_file' => true,
                 'datatabel' => true,
                 'alert'=> true,
@@ -88,19 +89,26 @@ class labSubmissionController {
         if ($reservation == null) {
             Router::redirect('/u/'.$user->seo_user.'/reservation-lab');
         }
+        $Requester = User::findById($reservation->user_id);
+        $Approver = null;
+        if ($reservation->reservation_approver != null && $reservation->reservation_approver != '') {
+            $Approver = User::findById($reservation->reservation_approver);
+        }
         return View::render(
-            template:'user/submission/labDetailReservation/index', 
+            template:'user/requester/labDetailReservation/index', 
             data:[
                 'formWizzard' => true,
                 'submission' => true,
-                'input_longText' => true,
+                'descRequest' => true,
                 'input_file' => true,
                 'datatabel' => true,
                 'alert'=> true,
                 'stepRequest' => true,
                 'user' => $user,	
                 'listLab' => $listLab,
-                'reservation' => $reservation
+                'reservation' => $reservation,
+                'approver' => $Approver,
+                'requester' => $Requester
             ],
             layout: 'layout/user/main'
         );
@@ -112,11 +120,10 @@ class labSubmissionController {
         $start = $_POST['start']??null;
         $end = $_POST['end']??null;
         $desc = $_POST['desc']??'';
-        $status = $_POST['status']??null;
+        $status = null;
         $descBefore = $_POST['descBefore']??null;
         $descAfter = $_POST['descAfter']??null;
         $fileStudent = null;
-
         $user = Auth::user();
         $reservation = labReservation::getReservationById($reservation_id);
         if ($reservation == null) {
@@ -128,6 +135,15 @@ class labSubmissionController {
             $filePath = labReservation::uploadFile($_FILES['student'], 'assets/file/labReservation/');
             $nameFile = explode('/', $filePath);
             $fileStudent = end($nameFile);
+        }
+        if ($reservation->reservation_status == 3 && strlen($descBefore)>11){
+            $status = 4;
+        }
+        elseif ($reservation->reservation_status == 4 && strlen($descAfter)>11){
+            $status = 5;
+        }
+        elseif ($reservation->reservation_status == 5 && $_POST['status']) {
+            $status = 6;
         }
         
         $reservation->lab_id = $lab_id??$reservation->lab_id;
@@ -143,6 +159,5 @@ class labSubmissionController {
         $reservation->save();
         $response['success'] = true;
         return json_encode($response);
-
     }
 }

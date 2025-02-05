@@ -61,5 +61,13 @@ class User extends Model {
     );
     return $result ? $result : [];
   }
-
+  public static function findById(string $id): ?User {
+    $db = App::get('database');
+    $result = $db->fetch(
+      'SELECT * FROM users WHERE id = ?', 
+      [$id],
+      static::class
+    );
+    return $result ? $result : null;
+  }
 }
