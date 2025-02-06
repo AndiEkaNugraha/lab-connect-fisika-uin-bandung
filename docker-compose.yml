@@ -19,8 +19,8 @@ services:
     expose:
       - "8002"  # Aplikasi tetap berjalan di port 8002
     volumes:
-      - /mounting/labConnect/database:/var/www/html/database
-      - /mounting/labConnect/public/assets/file:/var/www/html/public/public/assets/file
+      - /data/labConnect/database:/var/www/html/database
+      - /data/labConnect/public/assets/file:/var/www/html/public/assets/file
     networks:
       - app_network
 
