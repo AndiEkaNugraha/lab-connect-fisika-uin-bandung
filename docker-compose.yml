@@ -19,8 +19,8 @@ services:
     expose:
       - "8002"  # Aplikasi tetap berjalan di port 8002
     volumes:
-      - labconnect_database:/var/www/html/database
-      - labconnect_assets:/var/www/html/public/assets/file
+      - /home/fisika-uin/data/labConnect/database:/var/www/html/database
+      - /home/fisika-uin/data/labConnect/database/public/assets/file:/var/www/html/public/assets/file
     networks:
       - app_network
 
@@ -42,7 +42,3 @@ services:
 networks:
   app_network:
     driver: bridge
-
-volumes:
-  labconnect_database:
-  labconnect_assets:

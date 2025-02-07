@@ -8,6 +8,10 @@ use Core\View;
 class HomeController {
     public function index() { 
         $user = User::findByEmail("super2@admin.co");
-        return View::render(template:'home/index', data:['recentUsers'=> $user]);
+        return View::render(
+            template:'home/index',
+            layout: 'layout/general/main',
+            data:['recentUsers'=> $user]
+        );
     }
 }
