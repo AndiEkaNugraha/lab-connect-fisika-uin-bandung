@@ -42,7 +42,7 @@
                 <a href="contact-us.html" class="nav-item-link">Beranda</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
-                <a href="contact-us.html" class="nav-item-link">Labolatorium</a>
+                <a href="/labolatorium" class="nav-item-link">Labolatorium</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
                 <a href="contact-us.html" class="nav-item-link">Beranda</a>
@@ -54,15 +54,17 @@
             <button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>
           </div><!-- /.navbar-collapse -->
           <div class="d-none d-xl-flex align-items-center position-relative ml-30">
-            <div class="contact-phone d-flex align-items-center">
-              <div class="" style="border-radius: 50%; border: 2px solid #f4572e;height: 30px; width: 30px;overflow: hidden; margin-right: 10px">
-                <img src="/assets/img/userprofile.jpg" alt="profile" height="30" width="30"
-                    style="object-fit: contain;object-position: center;height: 30px; width: 30px;">
+            <a href="/u"  >
+              <div class="contact-phone d-flex align-items-center"  >
+                <div class="" style="border-radius: 50%; border: 2px solid #f4572e;height: 30px; width: 30px;overflow: hidden; margin-right: 10px">
+                <img src="<?= isset($user->avatar)? '/assets/file/avatar/'. $user->avatar :'/assets/img/userprofile.jpg'?>" alt="profile" height="30" width="30"
+                    style="object-fit: cover;object-position: center;height: 30px; width: 30px;">
+                </div>
+                <div>
+                  <div class="d-block fw-bold active" style="font-weight: bold;"><?= $user->name??'Login'?></div>
+                </div>
               </div>
-              <div>
-                <a class="d-block fw-bold active" href="tel:00201061245741" style="font-weight: bold;">Login</a>
-              </div>
-            </div>
+            </a>
           </div>
         </div><!-- /.container -->
       </nav><!-- /.navabr -->
@@ -78,128 +80,7 @@
     <!-- ========================
       Footer
     ========================== -->
-    <footer class="footer">
-      <div class="footer-primary">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-3">
-              <div class="footer-widget-contact">
-                <h6 class="footer-widget-title">Quick Contacts</h6>
-                <p>If you have any questions or need help, feel free to contact with our team.</p>
-                <ul class="contact-list list-unstyled">
-                  <li>
-                    <a href="mailto:provetta@7oroof.com">
-                      <i class="contact-icon icon-email"></i> <span>provetta@7oroof.com</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="tel:00201061245741">
-                      <i class="contact-icon icon-phone"></i> <span>(002) 01061245741</span>
-                    </a>
-                  </li>
-                </ul>
-                <p>2307 Beverley Rd Brooklyn, New York 11226 United States.</p>
-                <a href="contact-us.html" class="btn btn-white btn-link mr-30">
-                  <i class="fas fa-map-marker-alt"></i> <span>Get Directions</span>
-                </a>
-              </div>
-            </div><!-- /.col-xl-2 -->
-            <div class="col-sm-6 col-md-6 col-lg-2">
-              <div class="footer-widget-nav">
-                <h6 class="footer-widget-title">About Us</h6>
-                <nav>
-                  <ul class="list-unstyled">
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="team.html">Leadership Team</a></li>
-                    <li><a href="blog.html">News & Media</a></li>
-                    <li><a href="services.html">Sustainability</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                  </ul>
-                </nav>
-              </div><!-- /.footer-widget-content -->
-            </div><!-- /.col-lg-2 -->
-            <div class="col-sm-6 col-md-6 col-lg-2">
-              <div class="footer-widget-nav">
-                <h6 class="footer-widget-title">Tests & Services</h6>
-                <nav>
-                  <ul class="list-unstyled">
-                    <li><a href="#">General Diagnostic Tests</a></li>
-                    <li><a href="#"> Specialized Genetic Tests</a></li>
-                    <li><a href="#"> Food Sensitivity Tests</a></li>
-                    <li><a href="#">Genova Diagnostics </a></li>
-                    <li><a href="#">Hormone Insights Tests</a></li>
-                    <li><a href="#">Naturopathic Tests</a></li>
-                  </ul>
-                </nav>
-              </div><!-- /.footer-widget-content -->
-            </div><!-- /.col-lg-2 -->
-            <div class="col-sm-6 col-md-6 col-lg-2">
-              <div class="footer-widget-nav">
-                <h6 class="footer-widget-title">Links</h6>
-                <nav>
-                  <ul class="list-unstyled">
-                    <li><a href="#">Knowledge base</a></li>
-                    <li><a href="#">Report a Vulnerability</a></li>
-                    <li><a href="#">Suppliers & Vendors</a></li>
-                    <li><a href="#">Genova Diagnostics </a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Contact us</a></li>
-                  </ul>
-                </nav>
-              </div><!-- /.footer-widget-content -->
-            </div><!-- /.col-lg-2 -->
-            <div class="col-sm-6 col-md-6 col-lg-3">
-              <div class="footer-widget-time">
-                <h6 class="footer-widget-title">Working Hours</h6>
-                <ul class="time-list list-unstyled">
-                  <li>
-                    <span class="day">Week Days</span><span class="time">09.00 - 24:00</span>
-                  </li>
-                  <li>
-                    <span class="day">Saturday</span><span class="time">08:00 - 03.00</span>
-                  </li>
-                  <li>
-                    <span class="day">Sunday</span><span class="time">Day off</span>
-                  </li>
-                </ul>
-                <div class="d-flex align-items-center">
-                  <a href="contact-us.html" class="btn btn-primary btn-block">
-                    <span>Book Your Visit</span> <i class="icon-arrow-right"></i>
-                  </a>
-                </div>
-              </div><!-- /.footer-widget-time -->
-            </div><!-- /.col-lg-2 -->
-          </div><!-- /.row -->
-        </div><!-- /.container -->
-      </div><!-- /.footer-primary -->
-      <div class="footer-secondary">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-12 d-flex flex-wrap">
-              <ul class="social-icons list-unstyled mb-0 mr-50">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-              </ul><!-- /.social-icons -->
-              <div>
-                <nav>
-                  <ul class="list-unstyled footer-copyright-links d-flex flex-wrap mb-0">
-                    <li><a href="#">Privacy Statement</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Notice of Nondiscrimination</a></li>
-                    <li><a href="#">Report a Vulnerability</a></li>
-                  </ul>
-                </nav>
-                <div class="mt-1">
-                  <span>&copy; 2020 DataSoft, All Rights Reserved. With Love by</span>
-                  <a class="color-secondary" href="http://themeforest.net/user/7oroof">7oroof.com</a>
-                </div>
-              </div>
-            </div><!-- /.col-lg-6 -->
-          </div><!-- /.row -->
-        </div><!-- /.container -->
-      </div><!-- /.footer-secondary -->
-    </footer><!-- /.Footer -->
+    
     <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
 
     <svg class="svg-pathes" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
