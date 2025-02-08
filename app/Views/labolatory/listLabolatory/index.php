@@ -6,7 +6,7 @@
     <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 offset-xl-3">
-        <h1 class="pagetitle-heading">Research</h1>
+        <h1 class="pagetitle-heading">Labolatorium</h1>
         </div><!-- /.col-xl-6 -->
     </div><!-- /.row -->
     </div><!-- /.container -->
