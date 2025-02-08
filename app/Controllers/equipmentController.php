@@ -26,7 +26,7 @@ class equipmentController {
             template:'equipment/detailEquipment/index',
             layout: 'layout/general/main',
             data: [
-                'labDetail' => $equipment,
+                'equipment' => $equipment,
             ]
         );
     }

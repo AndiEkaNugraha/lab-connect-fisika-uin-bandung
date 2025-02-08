@@ -7,10 +7,6 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 offset-xl-3">
         <h1 class="pagetitle-heading">Research</h1>
-        <p class="pagetitle-desc">Your focus is on providing patients the best possible care and we’re here to
-            help. To complement our comprehensive menu of tests, we provide resources to registered healthcare
-            professionals to support your testing needs.
-        </p>
         </div><!-- /.col-xl-6 -->
     </div><!-- /.row -->
     </div><!-- /.container -->

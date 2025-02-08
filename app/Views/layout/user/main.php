@@ -66,9 +66,9 @@
     <!-- Logo --> 
     <a href="index.html" class="logo blue-bg"> 
     <!-- mini logo for sidebar mini 50x50 pixels --> 
-    <span class="logo-mini"><img src="/assets/user/dist/img/logo-n.png" alt=""></span> 
+    <span class="logo-mini"></span> 
     <!-- logo for regular state and mobile devices --> 
-    <span class="logo-lg"><img src="/assets/user/dist/img/logo.png" alt=""></span> </a> 
+    <span class="logo-lg"></span> </a> 
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar blue-bg navbar-static-top"> 
       <!-- Sidebar toggle button-->

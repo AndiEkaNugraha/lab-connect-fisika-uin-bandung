@@ -195,7 +195,7 @@
                 </div>
                 <div class="tab-pane" id="reset" role="tabpanel">
                   <div class="card-body">
-                    <form class="form-horizontal form-material">
+                    <!-- <form class="form-horizontal form-material">
                       <div class="form-group">
                         <label class="col-md-12">Full Name</label>
                         <div class="col-md-12">
@@ -243,7 +243,7 @@
                           <button class="btn btn-success">Update Profile</button>
                         </div>
                       </div>
-                    </form>
+                    </form> -->
                   </div>
                 </div>
               </div>

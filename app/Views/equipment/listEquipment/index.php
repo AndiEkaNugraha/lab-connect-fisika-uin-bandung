@@ -7,10 +7,6 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 offset-xl-3">
         <h1 class="pagetitle-heading">Peralatan</h1>
-        <p class="pagetitle-desc">Your focus is on providing patients the best possible care and we’re here to
-            help. To complement our comprehensive menu of tests, we provide resources to registered healthcare
-            professionals to support your testing needs.
-        </p>
         </div><!-- /.col-xl-6 -->
     </div><!-- /.row -->
     </div><!-- /.container -->
@@ -77,17 +73,6 @@
                     </div><!-- /.service-item -->
                 </div><!-- /.col-lg-4 -->
             <?php endforeach ?>
-        </div><!-- /.row -->
-        <div class="row">
-          <div class="col-12 text-center">
-            <nav class="pagination-area">
-              <ul class="pagination justify-content-center mb-0">
-                <li><a class="current" href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#"><i class="icon-arrow-right"></i></a></li>
-              </ul>
-            </nav><!-- .pagination-area -->
-          </div><!-- /.col-12 -->
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.Services Layout 1 -->
