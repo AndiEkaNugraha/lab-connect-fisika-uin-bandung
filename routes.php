@@ -14,6 +14,9 @@ $router->addRouteMiddleware('auth', Auth::class);
 $router->add('GET', '/', 'HomeController@index');
 $router->add('GET', '/labolatorium', 'labolatoryController@index');
 $router->add('GET', '/labolatorium/{lab_seo}', 'labolatoryController@detailLab');
+$router->add('GET', '/peralatan', 'equipmentController@index');
+$router->add('GET', '/peralatan/{equipment_seo}', 'equipmentController@detailEquipment');
+
 $router->add('GET', '/u', 'User\UserController@index');
 $router->add('GET', '/u/sign-in', 'AuthController@signIn');
 $router->add('POST', '/u/sign-in', 'AuthController@store');

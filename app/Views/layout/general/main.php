@@ -45,7 +45,7 @@
                 <a href="/labolatorium" class="nav-item-link">Labolatorium</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
-                <a href="contact-us.html" class="nav-item-link">Beranda</a>
+                <a href="/peralatan" class="nav-item-link">Peralatan</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
                 <a href="contact-us.html" class="nav-item-link">Contacts</a>
