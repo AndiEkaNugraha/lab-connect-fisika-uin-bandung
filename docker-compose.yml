@@ -16,7 +16,6 @@ services:
     image: lab-connect
     container_name: lab-connect
     restart: always
-    user: "1001:1001"
     expose:
       - "8002"  # Aplikasi tetap berjalan di port 8002
     volumes:
