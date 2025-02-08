@@ -21,7 +21,7 @@ services:
       - "8002"  # Aplikasi tetap berjalan di port 8002
     volumes:
       - /home/fisika-uin/data/labConnect/database:/var/www/html/database
-      - /home/fisika-uin/data/labConnect/database/public/assets/file:/var/www/html/public/assets/file
+      - /home/fisika-uin/data/labConnect/public/assets/file:/var/www/html/public/assets/file
     networks:
       - app_network
 
