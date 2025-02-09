@@ -75,6 +75,9 @@
                 <a href="/peralatan" class="nav-item-link">Peralatan</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
+                <a href="/proyek" class="nav-item-link">Proyek</a>
+              </li><!-- /.nav-item -->
+              <li class="nav-item">
                 <a href="/kontak" class="nav-item-link">Kontak</a>
               </li><!-- /.nav-item -->
             </ul><!-- /.navbar-nav -->

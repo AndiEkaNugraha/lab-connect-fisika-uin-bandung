@@ -16,6 +16,8 @@ $router->add('GET', '/labolatorium', 'labolatoryController@index');
 $router->add('GET', '/labolatorium/{lab_seo}', 'labolatoryController@detailLab');
 $router->add('GET', '/peralatan', 'equipmentController@index');
 $router->add('GET', '/peralatan/{equipment_seo}', 'equipmentController@detailEquipment');
+$router->add('GET', '/proyek', 'ProjectController@index');
+$router->add('GET', '/proyek/{project_seo}', 'ProjectController@detailEquipment');
 $router->add('GET', '/kontak', 'ContactController@index');
 $router->add('POST', '/get-in-touch', 'ContactController@getInTouch');
 
@@ -48,6 +50,13 @@ $router->add('GET', '/u/{user_seo}/lab-equipment/create', 'User\EquipmentControl
 $router->add('POST', '/u/{user_seo}/lab-equipment/create', 'User\EquipmentController@AddEquipment', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab-equipment/edit/{equipment_seo}', 'User\EquipmentController@editEquipment', ['auth']);
 $router->add('POST', '/u/{user_seo}/lab-equipment/edit/{equipment_seo}', 'User\EquipmentController@updateEquipment', ['auth']);
+
+$router->add('GET', '/u/{user_seo}/project', 'User\ProjectController@listProject', ['auth']);
+$router->add('POST', '/u/{user_seo}/project', 'User\ProjectController@deleteProject', ['auth']);
+$router->add('GET', '/u/{user_seo}/project/create', 'User\ProjectController@detailProject', ['auth']);
+$router->add('POST', '/u/{user_seo}/project/create', 'User\ProjectController@AddProject', ['auth']);
+$router->add('GET', '/u/{user_seo}/project/edit/{project_seo}', 'User\ProjectController@editProject', ['auth']);
+$router->add('POST', '/u/{user_seo}/project/edit/{project_seo}', 'User\ProjectController@updateProject', ['auth']);
 
 $router->add('GET', '/u/{user_seo}/reservation-lab', 'User\labSubmissionController@listReservation', ['auth']);
 $router->add('GET', '/u/{user_seo}/reservation-lab/create', 'User\labSubmissionController@createReservation', ['auth']);

@@ -32,7 +32,7 @@ class Lab extends Model {
   public static function findBySeo(string $seo): ?Lab {
     $db = App::get('database');
     $result = $db->fetch(
-      'SELECT * FROM labs WHERE seo_lab = ?', 
+      'SELECT * FROM labs WHERE seo_lab = ? AND is_deleted = 0', 
       [$seo],
       static::class
     );
@@ -41,7 +41,7 @@ class Lab extends Model {
   public static function findById(string $id): ?Lab {
     $db = App::get('database');
     $result = $db->fetch(
-      'SELECT * FROM labs WHERE id = ?', 
+      'SELECT * FROM labs WHERE id = ? AND is_deleted = 0', 
       [$id],
       static::class
     );
@@ -50,7 +50,7 @@ class Lab extends Model {
   public static function checkAllBySeo(string $seo): array {
     $db = App::get('database');
     $result = $db->fetchAll(
-      'SELECT * FROM labs WHERE seo_lab = ?',
+      'SELECT * FROM labs WHERE seo_lab = ? AND is_deleted = 0',
       [$seo],
       static::class
     );

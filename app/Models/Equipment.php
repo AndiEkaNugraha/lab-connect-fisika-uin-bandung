@@ -26,7 +26,7 @@ class Equipment extends Model {
   public static function findById(string $id): ?Equipment {
     $db = App::get('database');
     $result = $db->fetch(
-      'SELECT * FROM equipments WHERE id = ?', 
+      'SELECT * FROM equipments WHERE id = ? AND is_deleted = 0', 
       [$id],
       static::class
     );
@@ -45,7 +45,7 @@ class Equipment extends Model {
   public static function findBySeo(string $seo): ?Equipment {
     $db = App::get('database');
     $result = $db->fetch(
-      'SELECT * FROM equipments WHERE seo_equipment = ?', 
+      'SELECT * FROM equipments WHERE seo_equipment = ? AND is_deleted = 0', 
       [$seo],
       static::class
     );

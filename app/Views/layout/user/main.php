@@ -260,9 +260,9 @@
 
         <li class="header">Content</li>
         <li class=""> 
-          <a href="/u/<?= $user->seo_user??''?>/lab-news"> 
-            <i class="fa fa-globe"></i>
-            <span>News</span>
+          <a href="/u/<?= $user->seo_user??''?>/project"> 
+            <i class="fa fa-eercast"></i>
+            <span>Project</span>
           </a>
         </li>
       </ul>
