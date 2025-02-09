@@ -27,7 +27,34 @@
     <!-- =========================
         Header
     =========================== -->
-    <header class="header header-layout1">
+    <header class="header header-layout1">  
+      <div class="header-topbar" style="align-content: center; display: block">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col-12">
+              <div class="d-flex align-items-center justify-content-between">
+                <ul class="contact-list d-none d-lg-flex flex-wrap align-items-center list-unstyled mb-0">
+                  <li>
+                    <i class="icon-phone"></i><a href="tel:+6285795903881">Telepon: +62 857 9590 3881</a>
+                  </li>
+                  <li>
+                    <i class="icon-email"></i><a href="mailto:fisikafst@uinsgd.ac.id">Email: fisikafst@uinsgd.ac.id</a>
+                  </li>
+                  <li>
+                    <i class="icon-clock"></i><a href="contact-us.html">Sen - Jum: 8:00 WIB - 17:00 WIB</a>
+                  </li>
+                </ul><!-- /.contact-list -->
+                <div class="d-flex col" style="margin-left: auto; max-width: 500px">
+                  <form class="header-topbar-search" style="width: 100%">
+                    <input type="text" class="form-control" placeholder="Ketik Kata Pencarian">
+                    <button class="header-topbar-search-btn"><i class="fa fa-search"></i></button>
+                  </form>
+                </div>
+              </div>
+            </div><!-- /.col-12 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.header-top -->
       <nav class="navbar navbar-expand-lg sticky-navbar">
         <div class="container-fluid">
           <a class="navbar-brand" href="">
@@ -80,7 +107,104 @@
     <!-- ========================
       Footer
     ========================== -->
-    
+    <footer class="footer">
+      <div class="footer-primary">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-3">
+              <div class="footer-widget-contact">
+                <h6 class="footer-widget-title">Kontak</h6>
+                <ul class="contact-list list-unstyled">
+                  <li>
+                    <a href="mailto:fisikafst@uinsgd.ac.id">
+                      <i class="contact-icon icon-email"></i> <span>fisikafst@uinsgd.ac.id</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="tel:6285795903881">
+                      <i class="contact-icon icon-phone"></i> <span>+62 857 9590 3881</span>
+                    </a>
+                  </li>
+                </ul>
+                <p>3P99+69C, Cipadung, Kec. Cibiru, Kota Bandung, Jawa Barat 40614.</p>
+                <a href="contact-us.html" class="btn btn-white btn-link mr-30">
+                  <i class="fas fa-map-marker-alt"></i> <span>Get Directions</span>
+                </a>
+              </div>
+            </div><!-- /.col-xl-2 -->
+            <div class="col">
+              <form class="contact-panel-form" method="POST" id="contactForm">
+                <div class="row">
+                  <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Nama" id="contact-name" name="contact-name"
+                        required>
+                    </div>
+                  </div><!-- /.col-lg-4 -->
+                  <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Email" id="contact-email" name="contact-email"
+                        required>
+                    </div>
+                  </div><!-- /.col-lg-4 -->
+                  <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Telepon" id="contact-Phone" name="contact-phone"
+                        required>
+                    </div>
+                  </div><!-- /.col-lg-4 -->
+                  <div class="col-12">
+                    <div class="form-group">
+                      <textarea class="form-control" placeholder="Informasi yang dibutuhkan" id="contact-message"
+                        name="contact-message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-secondary  btn-block btn-xhight mt-10 mb-20" style="z-index: 2">
+                      <span>Kirimkan</span> <i class="icon-arrow-right"></i>
+                    </button>
+                    <div class="contact-result"></div>
+                  </div><!-- /.col-lg-12 -->
+                </div><!-- /.row -->
+              </form>
+            </div><!-- /.col-lg-2 -->
+            <div class="col-sm-12 col-md-6 col-lg-3">
+              <div class="footer-widget-time">
+                <h6 class="footer-widget-title">Jam Akses</h6>
+                <ul class="time-list list-unstyled">
+                  <li>
+                    <span class="day">Hari Kerja</span><span class="time">08.00 - 17:00</span>
+                  </li>
+                  <li>
+                    <span class="day">Sabtu</span><span class="time">Libur</span>
+                  </li>
+                  <li>
+                    <span class="day">Minggu</span><span class="time">Libur</span>
+                  </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                  <a href="/u" class="btn btn-primary btn-block">
+                    <span>Reservasi Lab</span> <i class="icon-arrow-right"></i>
+                  </a>
+                </div>
+              </div><!-- /.footer-widget-time -->
+            </div><!-- /.col-lg-2 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.footer-primary -->
+      <div class="footer-secondary">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-12 d-flex flex-wrap justify-content-end ">
+              <div>
+                <div class="mt-1">
+                  <span>&copy; 2025 Fisika Universitas Islam Negeri Sunan Gunung Djati Bandung, All Rights Reserved. </span>
+                  <a class="color-secondary" href="https://fi.uinsgd.ac.id/">fi.uinsgd.ac.id</a>
+                </div>
+              </div>
+            </div><!-- /.col-lg-6 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.footer-secondary -->
+    </footer><!-- /.Footer -->
     <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
 
     <svg class="svg-pathes" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -153,6 +277,26 @@
   <script src="/assets/general/js/jquery-3.5.1.min.js"></script>
   <script src="/assets/general/js/plugins.js"></script>
   <script src="/assets/general/js/main.js"></script>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Hindari reload halaman
+
+    let formData = new FormData(this);
+
+    fetch("process_contact.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        let resultDiv = document.querySelector(".contact-result");
+        resultDiv.innerHTML = `<p>${data.message}</p>`;
+        resultDiv.style.color = data.status === "success" ? "green" : "red";
+    })
+    .catch(error => console.error("Error:", error));
+  });
+
+  </script>
 </body>
 
 </html>

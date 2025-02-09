@@ -3,15 +3,20 @@ namespace App\Controllers;
 
 use App\Models\User;
 use Core\View;
-
+use App\Models\Lab;
+use App\Models\Equipment;
 
 class HomeController {
-    public function index() { 
-        $user = User::findByEmail("super2@admin.co");
+    public function index() {
+        $listEquipment = Equipment::getRecent(5);
+        $listLab = Lab::findAll();
         return View::render(
             template:'home/index',
             layout: 'layout/general/main',
-            data:['recentUsers'=> $user]
+            data: [
+                'listLab' => $listLab,
+                'listEquipment' => $listEquipment
+            ]
         );
     }
 }
