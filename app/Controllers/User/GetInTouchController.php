@@ -17,6 +17,8 @@ class GetInTouchController {
             template:'user/get-in-touch/list_get-in-touch/index',
             layout: 'layout/user/main',
             data: [
+                'datatabel' => true,
+                'alert'=> true,
                 'user' => $user,
                 'listMessegage' => $listMessegage
             ]
