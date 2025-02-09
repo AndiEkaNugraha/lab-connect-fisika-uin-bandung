@@ -14,6 +14,7 @@ class labolatoryController {
             layout: 'layout/general/main',
             data: [
                 'listLab' => $listLab,
+                'isLab' => true
             ]
         );
     }
@@ -24,6 +25,7 @@ class labolatoryController {
             layout: 'layout/general/main',
             data: [
                 'labDetail' => $lab,
+                'isLab' => true
             ]
         );
     }

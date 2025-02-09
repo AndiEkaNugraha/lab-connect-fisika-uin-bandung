@@ -42,6 +42,37 @@ class Equipment extends Model {
     );
     return $result ? $result : [];
   }
+
+  public static function available(): array {
+    $db = App::get('database');
+    $result = $db->fetchAll(
+        'SELECT * FROM equipments 
+        WHERE equipments_stock > 0 
+        AND equipments_stock > equipments_damaged 
+        AND is_active = 1 
+        AND is_deleted = 0',
+        [],
+        static::class
+      );
+      return $result ?: [];
+    }
+
+  public static function amountAvailable($id): ?int {
+    $db = App::get('database');
+    $result = $db->fetch(
+      'SELECT * FROM equipments 
+      WHERE equipments_stock > 0 
+      AND equipments_stock > equipments_damaged 
+      AND is_active = 1 
+      AND is_deleted = 0
+      and id = ?',
+      [$id],
+      static::class
+    );
+    $result = $result->equipments_stock - $result->equipments_damaged;
+    return $result ?? 0;
+  }
+
   public static function findBySeo(string $seo): ?Equipment {
     $db = App::get('database');
     $result = $db->fetch(

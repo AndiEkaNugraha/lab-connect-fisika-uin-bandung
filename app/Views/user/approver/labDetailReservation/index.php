@@ -266,11 +266,7 @@
         if (currentIndex === 1) {
           if (stepDirection === 'forward') {
             var valid = frmBefore.valid();
-            <?php if (isset($reservation) && $reservation->reservation_status >3) { ?>
-                return valid;
-            <?php } elseif (isset($reservation) && $reservation->reservation_status == 3) { ?>
-                return showAlert('danger', 'Save conditions before using the laboratory');
-            <?php } ?>
+            return valid;
           }
           if (stepDirection === 'backward') {
             frmBeforeValidator.resetForm();

@@ -3,7 +3,8 @@
 -- DROP TABLE IF EXISTS remember_tokens;
 -- DROP TABLE IF EXISTS labs;
 -- DROP TABLE IF EXISTS equipments;
--- DROP TABLE IF EXISTS reservationsLab;
+DROP TABLE IF EXISTS reservationsLab;
+DROP TABLE IF EXISTS reservationsEquipment;
 
 CREATE TABLE IF NOT EXISTS users (
     id TEXT PRIMARY KEY DEFAULT (
@@ -93,6 +94,7 @@ CREATE TABLE IF NOT EXISTS equipments (
     equipments_description TEXT,
     equipments_stock INT NOT NULL DEFAULT 0,
     equipments_damaged INT NOT NULL DEFAULT 0,
+    equipments_borrowed INT NOT NULL DEFAULT 0,
     seo_equipment TEXT NOT NULL,
     is_active BOOLEAN NOT NULL DEFAULT 1,
     is_deleted BOOLEAN NOT NULL DEFAULT 0,

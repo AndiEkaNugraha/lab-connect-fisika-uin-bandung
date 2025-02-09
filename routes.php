@@ -68,9 +68,18 @@ $router->add('GET', '/u/{user_seo}/lab-reservation', 'User\ApproverController@li
 $router->add('GET', '/u/{user_seo}/lab-reservation/{reservation_id}', 'User\ApproverController@detailReservationLab', ['auth']);
 $router->add('POST', '/u/{user_seo}/lab-reservation/{reservation_id}', 'User\ApproverController@updateReservationLab', ['auth']);
 
+$router->add('GET', '/u/{user_seo}/reservation-equipment', 'User\EquipmentSubmissionController@listReservation', ['auth']);
+$router->add('GET', '/u/{user_seo}/reservation-equipment/create', 'User\EquipmentSubmissionController@createReservation', ['auth']);
+$router->add('POST', '/u/{user_seo}/reservation-equipment/create', 'User\EquipmentSubmissionController@AddReservation', ['auth']);
+$router->add('GET', '/u/{user_seo}/reservation-equipment/{reservation_id}', 'User\EquipmentSubmissionController@editReservation', ['auth']);
+$router->add('POST', '/u/{user_seo}/reservation-equipment/{reservation_id}', 'User\EquipmentSubmissionController@updateReservation', ['auth']);
+
+$router->add('GET', '/u/{user_seo}/equipment-reservation', 'User\ApproverController@listReservationEquipment', ['auth']);
+$router->add('GET', '/u/{user_seo}/equipment-reservation/{reservation_id}', 'User\ApproverController@detailReservationEquipment', ['auth']);
+$router->add('POST', '/u/{user_seo}/equipment-reservation/{reservation_id}', 'User\ApproverController@updateReservationEquipment', ['auth']);
+
 $router->add('GET', '/u/{user_seo}/get-in-touch', 'User\GetInTouchController@index', ['auth']);
 $router->add('GET', '/u/{user_seo}/get-in-touch/{id}', 'User\GetInTouchController@detail', ['auth']);
 $router->add('POST', '/u/{user_seo}/get-in-touch/{id}', 'User\GetInTouchController@EDIT', ['auth']);
 
 $router->add('GET', '/u/{user_seo}/lab-news', 'User\NewsController@listNews', ['auth']);
-

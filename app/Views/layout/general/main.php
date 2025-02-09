@@ -65,20 +65,20 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="mainNavigation">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a href="/" class="nav-item-link">Beranda</a>
+              <li class="nav-item ">
+                <a href="/" class="nav-item-link <?= isset($isHome) && $isHome ? 'active' : '' ?>">Beranda</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
-                <a href="/labolatorium" class="nav-item-link">Labolatorium</a>
+                <a href="/labolatorium" class="nav-item-link <?= isset($isLab) && $isLab ? 'active' : '' ?>">Labolatorium</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
-                <a href="/peralatan" class="nav-item-link">Peralatan</a>
+                <a href="/peralatan" class="nav-item-link <?= isset($isEquipment) && $isEquipment ? 'active' : '' ?>">Peralatan</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
-                <a href="/proyek" class="nav-item-link">Proyek</a>
+                <a href="/proyek" class="nav-item-link <?= isset($isProject) && $isProject ? 'active' : '' ?>">Proyek</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
-                <a href="/kontak" class="nav-item-link">Kontak</a>
+                <a href="/kontak" class="nav-item-link <?= isset($isContact) && $isContact ? 'active' : '' ?>">Kontak</a>
               </li><!-- /.nav-item -->
             </ul><!-- /.navbar-nav -->
             <button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>

@@ -65,10 +65,11 @@
   <header class="main-header"> 
     <!-- Logo --> 
     <a href="index.html" class="logo blue-bg"> 
-    <!-- mini logo for sidebar mini 50x50 pixels --> 
-    <span class="logo-mini"></span> 
-    <!-- logo for regular state and mobile devices --> 
-    <span class="logo-lg"></span> </a> 
+      <!-- mini logo for sidebar mini 50x50 pixels --> 
+      <span class="logo-mini"><span class="text-white"><i class="fa fa-sign-out fa-flip-horizontal"></i></span></span> 
+      <!-- logo for regular state and mobile devices --> 
+      <span class="logo-lg"><span class="text-white"><i class="fa fa-sign-out fa-flip-horizontal"></i></span></span> 
+    </a> 
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar blue-bg navbar-static-top"> 
       <!-- Sidebar toggle button-->
@@ -175,15 +176,21 @@
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar"> 
+  <aside class="main-sidebar" style="z-index: 99999;padding-top:14px"> 
     <!-- sidebar: style can be found in sidebar.less -->
     <div class="sidebar"> 
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
+        <li class=""> 
+          <a href="/"> 
+            <i class="fa fa-arrow-left"></i> 
+            <span>Website</span> 
+          </a>
+        </li>
         <li class="header">Personal</li>
         <li class=""> 
-          <a href="/u/<?= $user->seo_user??''?>/lab"> 
+          <a href="/u/"> 
             <i class="fa fa-hospital-o"></i> 
             <span>Dashboard</span> 
           </a>
@@ -273,8 +280,7 @@
     <?= $content ?>
 
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">Version 1.2</div>
-    Copyright © 2017 Yourdomian. All rights reserved.</footer>
+    © 2025 Fisika Universitas Islam Negeri Sunan Gunung Djati Bandung, All Rights Reserved. fi.uinsgd.ac.id</footer>
 </div>
 <!-- ./wrapper --> 
 

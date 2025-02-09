@@ -16,7 +16,8 @@ class ProjectController {
             layout: 'layout/general/main',
             data: [
                 'listProject' => $listProject,
-                'listLab' => $listLab
+                'listLab' => $listLab,
+                'isProject' => true
             ]
         );
     }
@@ -28,6 +29,7 @@ class ProjectController {
             layout: 'layout/general/main',
             data: [
                 'project' => $project,
+                'isProject' => true
             ]
         );
     }

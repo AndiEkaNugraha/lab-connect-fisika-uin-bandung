@@ -15,7 +15,8 @@ class equipmentController {
             layout: 'layout/general/main',
             data: [
                 'listEquipment' => $listEquipment,
-                'listLab' => $listLab
+                'listLab' => $listLab,
+                'isEquipment' => true
             ]
         );
     }
@@ -27,6 +28,7 @@ class equipmentController {
             layout: 'layout/general/main',
             data: [
                 'equipment' => $equipment,
+                'isEquipment' => true
             ]
         );
     }

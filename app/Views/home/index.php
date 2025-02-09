@@ -95,7 +95,7 @@
                         </p>
                     </div><!-- /.service-body -->
                     <div class="service-img">
-                        <img src="/assets/file/lab/<?=strlen($lab->lab_banner) > 1 ? $lab->lab_banner :'default/banner-lab-default.jpg'?>" alt="service">
+                        <img style="object-fit: cover;object-position: center" src="/assets/file/lab/<?=strlen($lab->lab_banner) > 1 ? $lab->lab_banner :'default/banner-lab-default.jpg'?>" alt="service" height="190px">
                     </div><!-- /.service-img -->
                     <a href="labolatorium/<?=$lab->seo_lab?>" class="service-more">
                         <svg class="service-more-svg">
@@ -151,7 +151,7 @@
                   <p class="service-desc">
                     <?php 
                         $text = strip_tags($equipment->equipments_description); 
-                        echo mb_strlen($text) > 10 ? mb_substr($text, 0, 200) . "..." : $text;
+                        echo mb_strlen($text) > 10 ? mb_substr($text, 0, 180) . "..." : $text;
                     ?>
                   </p>
                   <a href="peralatan/<?=$equipment->seo_equipment?>" class="btn btn-link btn-primary">

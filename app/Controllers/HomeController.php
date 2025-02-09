@@ -15,7 +15,8 @@ class HomeController {
             layout: 'layout/general/main',
             data: [
                 'listLab' => $listLab,
-                'listEquipment' => $listEquipment
+                'listEquipment' => $listEquipment,
+                'isHome' => true
             ]
         );
     }
