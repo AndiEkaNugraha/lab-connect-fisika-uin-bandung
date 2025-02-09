@@ -8,7 +8,7 @@
   <meta name="description" content="Labolatorium Fisika Universitas Islam Negeri Bandung">
   <link href="/assets/img/icon-150x150.png" rel="icon" sizes="32x32">
   <link href="/assets/img/icon-300x300" rel="icon" sizes="192x192">
-  <title>Labolatorium Fisika</title>
+  <title>Laboratorium Fisika</title>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
@@ -34,14 +34,14 @@
             <div class="col-12">
               <div class="d-flex align-items-center justify-content-between">
                 <ul class="contact-list d-none d-lg-flex flex-wrap align-items-center list-unstyled mb-0">
-                  <li>
+                  <li style="margin-bottom:0px">
                     <i class="icon-phone"></i><a href="tel:+6285795903881">Telepon: +62 857 9590 3881</a>
                   </li>
-                  <li>
+                  <li style="margin-bottom:0px">
                     <i class="icon-email"></i><a href="mailto:fisikafst@uinsgd.ac.id">Email: fisikafst@uinsgd.ac.id</a>
                   </li>
                   <li>
-                    <i class="icon-clock"></i><a href="contact-us.html">Sen - Jum: 8:00 WIB - 17:00 WIB</a>
+                    <i class="icon-clock"></i><a href="contact-us.html">Sen - Jum: 7:00 WIB - 17:00 WIB</a>
                   </li>
                 </ul><!-- /.contact-list -->
                 <div class="d-flex col" style="margin-left: auto; max-width: 500px">
@@ -57,7 +57,7 @@
       </div><!-- /.header-top -->
       <nav class="navbar navbar-expand-lg sticky-navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="">
+          <a class="navbar-brand" href="/">
             <img src="/assets/img/logo.png" class="logo-dark" alt="logo" height="65px" width="auto">
           </a>
           <button class="navbar-toggler" type="button">
@@ -66,7 +66,7 @@
           <div class="collapse navbar-collapse justify-content-end" id="mainNavigation">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a href="contact-us.html" class="nav-item-link">Beranda</a>
+                <a href="/" class="nav-item-link">Beranda</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
                 <a href="/labolatorium" class="nav-item-link">Labolatorium</a>
@@ -75,7 +75,7 @@
                 <a href="/peralatan" class="nav-item-link">Peralatan</a>
               </li><!-- /.nav-item -->
               <li class="nav-item">
-                <a href="contact-us.html" class="nav-item-link">Contacts</a>
+                <a href="/kontak" class="nav-item-link">Kontak</a>
               </li><!-- /.nav-item -->
             </ul><!-- /.navbar-nav -->
             <button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>
@@ -111,7 +111,7 @@
       <div class="footer-primary">
         <div class="container">
           <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-3">
+            <div class="<?= isset($isContact) && $isContact ? 'col-sm-12 col-md-6' : 'col-sm-12 col-md-12 col-lg-12 col-xl-3' ?> ">
               <div class="footer-widget-contact">
                 <h6 class="footer-widget-title">Kontak</h6>
                 <ul class="contact-list list-unstyled">
@@ -126,39 +126,39 @@
                     </a>
                   </li>
                 </ul>
-                <p>3P99+69C, Cipadung, Kec. Cibiru, Kota Bandung, Jawa Barat 40614.</p>
+                <p>UIN SUNAN GUNUNG DJATI, Cipadung, Kec. Cibiru, Kota Bandung, Jawa Barat 40614.</p>
                 <a href="contact-us.html" class="btn btn-white btn-link mr-30">
                   <i class="fas fa-map-marker-alt"></i> <span>Get Directions</span>
                 </a>
               </div>
             </div><!-- /.col-xl-2 -->
-            <div class="col">
-              <form class="contact-panel-form" method="POST" id="contactForm">
+            <div class="col <?= isset($isContact) && $isContact ? 'd-none' : '' ?>">
+              <form id="contactFormFooter" class="contact-panel-form">
                 <div class="row">
                   <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Nama" id="contact-name" name="contact-name"
+                      <input type="text" class="form-control" placeholder="Nama" id="contact-name" name="name"
                         required>
                     </div>
                   </div><!-- /.col-lg-4 -->
                   <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
-                      <input type="email" class="form-control" placeholder="Email" id="contact-email" name="contact-email"
+                      <input type="email" class="form-control" placeholder="Email" id="contact-email" name="email"
                         required>
                     </div>
                   </div><!-- /.col-lg-4 -->
                   <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Telepon" id="contact-Phone" name="contact-phone"
+                      <input type="text" class="form-control" placeholder="Telepon" id="contact-Phone" name="phone"
                         required>
                     </div>
                   </div><!-- /.col-lg-4 -->
                   <div class="col-12">
                     <div class="form-group">
-                      <textarea class="form-control" placeholder="Informasi yang dibutuhkan" id="contact-message"
-                        name="contact-message"></textarea>
+                      <textarea class="form-control" placeholder="Informasi yang dibutuhkan" id="message"
+                        name="message"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-secondary  btn-block btn-xhight mt-10 mb-20" style="z-index: 2">
+                    <button style="z-index: 2" type="button" id="submitContactFooter" class="btn btn-secondary btn-block btn-xhight mt-10 mb-20">
                       <span>Kirimkan</span> <i class="icon-arrow-right"></i>
                     </button>
                     <div class="contact-result"></div>
@@ -166,12 +166,12 @@
                 </div><!-- /.row -->
               </form>
             </div><!-- /.col-lg-2 -->
-            <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="col-sm-12 col-md-5 col-lg-4" style="margin-left: auto">
               <div class="footer-widget-time">
                 <h6 class="footer-widget-title">Jam Akses</h6>
                 <ul class="time-list list-unstyled">
                   <li>
-                    <span class="day">Hari Kerja</span><span class="time">08.00 - 17:00</span>
+                    <span class="day">Hari Kerja</span><span class="time">07.00 - 17:00</span>
                   </li>
                   <li>
                     <span class="day">Sabtu</span><span class="time">Libur</span>
@@ -278,25 +278,52 @@
   <script src="/assets/general/js/plugins.js"></script>
   <script src="/assets/general/js/main.js"></script>
   <script>
-    document.getElementById("contactForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Hindari reload halaman
+  document.getElementById("submitContactFooter").addEventListener("click", function(event) {
+    event.preventDefault(); // Mencegah aksi default tombol
+    var csrfToken = '<?= csrf_token_value() ?>';
+    var thisUrl = '<?= $_SERVER['REQUEST_URI'] ?>';
+    let form = document.getElementById("contactFormFooter");
+    let formData = new FormData(form);
+    formData.append('_token', csrfToken);
 
-    let formData = new FormData(this);
+    // Validasi: Pastikan tidak ada field kosong (kecuali message)
+    if (!formData.get("name") || !formData.get("email") || !formData.get("phone")) {
+      document.querySelector(".contact-result").innerHTML = 
+        '<p class="alert alert-danger">Harap isi semua field yang diperlukan.</p>';
+      return;
+    }
 
-    fetch("process_contact.php", {
-        method: "POST",
-        body: formData
+    fetch("get-in-touch", {
+      method: "POST",
+      body: formData
     })
-    .then(response => response.json())
+    .then(response => response.json()) // Menggunakan JSON jika server merespons dalam format JSON
     .then(data => {
-        let resultDiv = document.querySelector(".contact-result");
-        resultDiv.innerHTML = `<p>${data.message}</p>`;
-        resultDiv.style.color = data.status === "success" ? "green" : "red";
+      if (data.success) {
+        document.querySelector(".contact-result").innerHTML = 
+          '<p class="alert alert-success">Pesan terkirim!</p>';
+        form.reset(); // Reset form setelah berhasil
+        setTimeout(() => {
+          setTimeout(() => window.location.href = thisUrl, 1000);
+        })
+      } else {
+        document.querySelector(".contact-result").innerHTML = 
+          `<p class="alert alert-danger">${data.message || "Terjadi kesalahan, coba lagi."}</p>`;
+          setTimeout(() => {
+            setTimeout(() => window.location.href = thisUrl, 1000);
+          })
+      }
     })
-    .catch(error => console.error("Error:", error));
+    .catch(error => {
+      document.querySelector(".contact-result").innerHTML = 
+        '<p class="alert alert-danger">Terjadi kesalahan jaringan, coba lagi.</p>';
+        setTimeout(() => {
+            setTimeout(() => window.location.href = thisUrl, 1000);
+        })
+    });
   });
+</script>
 
-  </script>
 </body>
 
 </html>

@@ -16,6 +16,8 @@ $router->add('GET', '/labolatorium', 'labolatoryController@index');
 $router->add('GET', '/labolatorium/{lab_seo}', 'labolatoryController@detailLab');
 $router->add('GET', '/peralatan', 'equipmentController@index');
 $router->add('GET', '/peralatan/{equipment_seo}', 'equipmentController@detailEquipment');
+$router->add('GET', '/kontak', 'ContactController@index');
+$router->add('POST', '/get-in-touch', 'ContactController@getInTouch');
 
 $router->add('GET', '/u', 'User\UserController@index');
 $router->add('GET', '/u/sign-in', 'AuthController@signIn');
@@ -56,6 +58,10 @@ $router->add('POST', '/u/{user_seo}/reservation-lab/{reservation_id}', 'User\lab
 $router->add('GET', '/u/{user_seo}/lab-reservation', 'User\ApproverController@listReservationLab', ['auth']);
 $router->add('GET', '/u/{user_seo}/lab-reservation/{reservation_id}', 'User\ApproverController@detailReservationLab', ['auth']);
 $router->add('POST', '/u/{user_seo}/lab-reservation/{reservation_id}', 'User\ApproverController@updateReservationLab', ['auth']);
+
+$router->add('GET', '/u/{user_seo}/get-in-touch', 'User\GetInTouchController@index', ['auth']);
+$router->add('GET', '/u/{user_seo}/get-in-touch/{id}', 'User\GetInTouchController@detail', ['auth']);
+$router->add('POST', '/u/{user_seo}/get-in-touch/{id}', 'User\GetInTouchController@EDIT', ['auth']);
 
 $router->add('GET', '/u/{user_seo}/lab-news', 'User\NewsController@listNews', ['auth']);
 

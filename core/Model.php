@@ -74,7 +74,6 @@ public static function create(array $data): static|null {
 
     // Hilangkan field kosong (optional)
     $data = array_filter($data, fn($value) => $value !== null && $value !== "");
-
     // Buat query INSERT
     $columns = implode(', ', array_keys($data));
     $placeholders = implode(', ', array_fill(0, count($data), '?'));

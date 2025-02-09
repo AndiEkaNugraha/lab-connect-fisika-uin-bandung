@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS categoriesUsers;
-DROP TABLE IF EXISTS remember_tokens;
-DROP TABLE IF EXISTS labs;
-DROP TABLE IF EXISTS equipments;
-DROP TABLE IF EXISTS reservationsLab;
+-- DROP TABLE IF EXISTS users;
+-- DROP TABLE IF EXISTS categoriesUsers;
+-- DROP TABLE IF EXISTS remember_tokens;
+-- DROP TABLE IF EXISTS labs;
+-- DROP TABLE IF EXISTS equipments;
+-- DROP TABLE IF EXISTS reservationsLab;
 
 CREATE TABLE IF NOT EXISTS users (
     id TEXT PRIMARY KEY DEFAULT (

@@ -36,6 +36,7 @@ class Authorization {
       'edit_post' => in_array($user->cat_id, [1, 2, 3]) && $resource instanceof Post,
       'reservation' => in_array($user->cat_id, [3,4]),
       'approver' => in_array($user->cat_id, [2]),
+      'get_in_touch' => in_array($user->cat_id, [2]),
       default => false
     };
   }

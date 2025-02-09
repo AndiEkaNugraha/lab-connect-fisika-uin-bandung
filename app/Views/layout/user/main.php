@@ -202,21 +202,21 @@
         </li>
         <?php endif;?>
 
-        <?php if(check('edit_facility')): ?>
-        <li class="header">Facility</li>
-        <li class=""> 
-          <a href="/u/<?= $user->seo_user??''?>/lab"> 
-            <i class="fa fa-building"></i> 
-            <span>Labolatory</span> 
-          </a>
-        </li>
-        <li class=""> 
-          <a href="/u/<?= $user->seo_user??''?>/lab-equipment"> 
-            <i class="fa fa-thermometer-half"></i>
-            <span>Equipment</span>
-          </a>
-        </li>
-        <?php endif;?>
+          <?php if(check('edit_facility')): ?>
+          <li class="header">Facility</li>
+          <li class=""> 
+            <a href="/u/<?= $user->seo_user??''?>/lab"> 
+              <i class="fa fa-building"></i> 
+              <span>Labolatory</span> 
+            </a>
+          </li>
+          <li class=""> 
+            <a href="/u/<?= $user->seo_user??''?>/lab-equipment"> 
+              <i class="fa fa-thermometer-half"></i>
+              <span>Equipment</span>
+            </a>
+          </li>
+          <?php endif;?>
         <?php if(check('reservation')): ?>
         <li class="header">Request</li>
         <li class=""> 
@@ -247,6 +247,17 @@
           </a>
         </li>
         <?php endif;?>
+
+        <?php if(check('get_in_touch')): ?>
+        <li class="header">Get in Touch</li>
+        <li class=""> 
+          <a href="/u/<?= $user->seo_user??''?>/get-in-touch"> 
+            <i class="fa fa-envelope"></i>
+            <span>Message</span>
+          </a>
+        </li>
+        <?php endif;?>
+
         <li class="header">Content</li>
         <li class=""> 
           <a href="/u/<?= $user->seo_user??''?>/lab-news"> 
