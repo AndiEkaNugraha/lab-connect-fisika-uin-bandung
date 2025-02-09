@@ -41,7 +41,7 @@
                     <i class="icon-email"></i><a href="mailto:fisikafst@uinsgd.ac.id">Email: fisikafst@uinsgd.ac.id</a>
                   </li>
                   <li>
-                    <i class="icon-clock"></i><a href="contact-us.html">Sen - Jum: 7:00 WIB - 17:00 WIB</a>
+                    <i class="icon-clock"></i><a href="/kontak">Sen - Jum: 7:00 WIB - 17:00 WIB</a>
                   </li>
                 </ul><!-- /.contact-list -->
                 <div class="d-flex col" style="margin-left: auto; max-width: 500px">
@@ -127,8 +127,8 @@
                   </li>
                 </ul>
                 <p>UIN SUNAN GUNUNG DJATI, Cipadung, Kec. Cibiru, Kota Bandung, Jawa Barat 40614.</p>
-                <a href="contact-us.html" class="btn btn-white btn-link mr-30">
-                  <i class="fas fa-map-marker-alt"></i> <span>Get Directions</span>
+                <a href="/kontak" class="btn btn-white btn-link mr-30">
+                  <i class="fas fa-map-marker-alt"></i> <span>Dapatkan Petunjuk Arah</span>
                 </a>
               </div>
             </div><!-- /.col-xl-2 -->

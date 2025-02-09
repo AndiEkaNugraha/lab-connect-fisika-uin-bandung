@@ -67,7 +67,9 @@ class EquipmentController {
         $desc = $_POST['descLong']??null;
         $stock = $_POST['stock']??'0';
         $damaged = $_POST['damaged']??'0';
-        $seo = strlen($_POST['seo']) != 0 ? $_POST['seo'] : strtolower(str_replace(' ','-', $name));
+        $seo = strlen($_POST['seo']) != 0 
+            ? strtolower(str_replace([' ', '/'], ['-', '_'], $_POST['seo'])) 
+            : strtolower(str_replace([' ', '/'], ['-', '_'], $name));
         $status = $_POST['status']??'';
         $created_by = Auth::user()->id;
         $banner = null;
@@ -198,7 +200,9 @@ class EquipmentController {
         $desc = $_POST['descLong']??null;
         $stock = $_POST['stock']??'0';
         $damaged = $_POST['damaged']??'0';
-        $seo = strlen($_POST['seo']) != 0 ? strtolower(str_replace(' ','-',$_POST['seo'])) : strtolower(str_replace(' ','-', $name));
+        $seo = strlen($_POST['seo']) != 0 
+            ? strtolower(str_replace([' ', '/'], ['-', '_'], $_POST['seo'])) 
+            : strtolower(str_replace([' ', '/'], ['-', '_'], $name));
         $status = $_POST['status'];
         $updated_by = Auth::user()->id;
         $banner = null;
