@@ -139,7 +139,7 @@
                 endforeach ?>
               <div class="service-item">
                 <div class="service-img">
-                  <div class="bg-img"><img src="assets/images/services/1.jpg" alt="equipment"></div>
+                  <div class="bg-img"><img src="/assets/file/equipment/<?=strlen($equipment->equipments_banner) > 1 ? $equipment->equipments_banner :'default/banner-equipment-default.jpg'?>" alt="equipment"></div>
                 </div><!-- /.service-img -->
                 <div class="service-body">
                   <div class="service-category">
