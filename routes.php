@@ -20,6 +20,7 @@ $router->add('GET', '/proyek', 'ProjectController@index');
 $router->add('GET', '/proyek/{project_seo}', 'ProjectController@detailEquipment');
 $router->add('GET', '/kontak', 'ContactController@index');
 $router->add('POST', '/get-in-touch', 'ContactController@getInTouch');
+$router->add('GET', '/cari', 'SearchController@index');
 
 $router->add('GET', '/u', 'User\UserController@index');
 $router->add('GET', '/u/sign-in', 'AuthController@signIn');

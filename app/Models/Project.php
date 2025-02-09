@@ -59,4 +59,14 @@ class Project extends Model {
     );
     return $result ? $result : null;
   }
+  public static function search($search): array {
+    $db = App::get('database');
+    $result = $db->fetchAll(
+        'SELECT * FROM projects WHERE (projects_name LIKE ? OR projects_description LIKE ?) AND is_active = 1 AND is_deleted = 0',
+        ["%$search%", "%$search%"], // Menambahkan dua parameter
+        static::class
+    );
+    return $result ?: []; // Lebih ringkas daripada `return $result ? $result : [];`
+  }
+
 }

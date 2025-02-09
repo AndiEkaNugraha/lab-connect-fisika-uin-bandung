@@ -27,6 +27,11 @@
         <div class="text-detail">
         <h4 class="sub-title">Oops!</h4>
           <p class="detail-text">Internal Server Error,<br> The server cannot process the request for an unknown reason.</p>
+          <p>
+            <?php
+              // echo htmlspecialchars($errorMessage)
+            ?>
+          </p>
             <div class="back-btn">
                 <a href="/" class="btn">Back to Home</a>
             </div>

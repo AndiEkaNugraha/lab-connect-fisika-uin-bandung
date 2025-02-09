@@ -45,8 +45,8 @@
                   </li>
                 </ul><!-- /.contact-list -->
                 <div class="d-flex col" style="margin-left: auto; max-width: 500px">
-                  <form class="header-topbar-search" style="width: 100%">
-                    <input type="text" class="form-control" placeholder="Ketik Kata Pencarian">
+                  <form class="header-topbar-search" style="width: 100%" action="/cari" method="get">
+                    <input type="text" class="form-control" placeholder="Ketik Kata Pencarian" name="q">
                     <button class="header-topbar-search-btn"><i class="fa fa-search"></i></button>
                   </form>
                 </div>
