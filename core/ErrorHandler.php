@@ -37,7 +37,9 @@ class ErrorHandler {
 
   private static function renderErrorPage(\Throwable $exception): void {
     $isDebug = App::get('config')['app']['debug'] ?? false;
-
+    if (ob_get_length()) {
+      ob_end_clean();
+    }
     if ($isDebug) {
       $errorMessage = static::formatErrorMessage(
         $exception,

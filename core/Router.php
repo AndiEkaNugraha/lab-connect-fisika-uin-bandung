@@ -26,25 +26,25 @@ class Router {
 
     public function notFound(): void {
         http_response_code(404);
-        echo View::render('errors/404');
+        echo View::render('errors/404', [], 'layout/main');
         exit;
     }
 
     public static function unauthorized(): void {
         http_response_code(401);
-        echo View::render('errors/401');
+        echo View::render('errors/401', [], 'layout/main');
         exit;
       }
     
       public static function forbidden(): void {
         http_response_code(403);
-        echo View::render('errors/403');
+        echo View::render('errors/403', [], 'layout/main');
         exit;
       }
 
     public static function pageExpired(): void {
         http_response_code(419);
-        echo View::render('errors/419');
+        echo View::render('errors/419', [], 'layout/main');
         exit;
       }
 
