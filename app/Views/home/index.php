@@ -67,7 +67,7 @@
     Services Layout 4
 =========================== -->
 <section class="services-layout4 pb-0">
-    <div class="container">
+  <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
         <div class="heading-layout2 text-center mb-50">
@@ -108,9 +108,18 @@
                 </div><!-- /.service-item -->
             <?php endforeach; ?>
         </div><!-- /.slick-carousel -->
+        
         </div><!-- /.col-12 -->
     </div><!-- /.row -->
-    </div><!-- /.container -->
+    <div class="row">
+      <div class="col-12 text-center">
+        <a href="/labolatorium" class="btn btn-link btn-primary">
+          <span>Liat selengkapnya</span>
+          <i class="icon-arrow-right"></i>
+        </a>
+      </div><!-- /.col-12 -->
+    </div>
+  </div><!-- /.container -->
 </section><!-- /.Services Layout 4 -->
 
 <!-- ========================
@@ -126,6 +135,14 @@
         </div>
       </div><!-- /.col-lg-12 -->
     </div><!-- /.row -->
+    <div class="row mb-10">
+      <div class="col-12 text-left">
+        <a href="/peralatan" class="btn btn-link btn-primary">
+          <span>Liat selengkapnya</span>
+          <i class="icon-arrow-right"></i>
+        </a>
+      </div><!-- /.col-12 -->
+    </div>
     <div class="row">
       <div class="col-12">
         <div class="carousel-wrapper">
@@ -167,5 +184,6 @@
         </div><!-- /.carousel-wrapper -->
       </div><!-- /.col-12 -->
     </div><!-- /.row -->
+    
   </div><!-- /.container -->
 </section><!-- /.Services Layout 2 -->
