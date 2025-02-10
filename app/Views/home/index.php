@@ -112,7 +112,7 @@
         </div><!-- /.col-12 -->
     </div><!-- /.row -->
     <div class="row">
-      <div class="col-12 text-center">
+      <div class="col-12 text-right">
         <a href="/labolatorium" class="btn btn-link btn-primary">
           <span>Liat selengkapnya</span>
           <i class="icon-arrow-right"></i>
