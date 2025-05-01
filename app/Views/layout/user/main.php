@@ -272,6 +272,13 @@
             <span>Project</span>
           </a>
         </li>
+        <li class="header">Research</li>
+        <li class=""> 
+          <a href="/u/<?= $user->seo_user??''?>/measurement"> 
+            <i class="fa fa-microchip"></i>
+            <span>Measurement</span>
+          </a>
+        </li>
       </ul>
     </div>
     <!-- /.sidebar --> 
@@ -297,6 +304,13 @@
 <script src="/assets/user/dist/plugins/raphael/raphael-min.js"></script> 
 <script src="/assets/user/dist/plugins/morris/morris.js"></script>
 <script src="/assets/user/dist/plugins/functions/morris-init.js"></script>
+<script src="/assets/user/dist/js/alert.js"></script>
+
+<?php if (isset($_SESSION['status'])) : ?>
+  <script>
+    showAlert('<?= $_SESSION['status'] ?>', '<?= $_SESSION['message'] ?>');
+  </script>
+<?php endif; ?>
 
 <?php if (isset($edit_avatar) || isset($input_image) || isset($input_file)) : ?>
 <script src="/assets/user/dist/plugins/dropify/dropify.min.js"></script> 
@@ -384,10 +398,7 @@
 </script>
 <?php endif; ?>
 
-<?php if (isset($alert)) : ?>
-<!-- /.content-wrapper -->
-<script src="/assets/user/dist/js/alert.js"></script>
-<?php endif; ?>
+
 
 <?php if (isset($datatabel)) : ?>
 <!-- DataTable --> 
