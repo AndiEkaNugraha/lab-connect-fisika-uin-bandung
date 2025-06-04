@@ -84,3 +84,10 @@ $router->add('GET', '/u/{user_seo}/get-in-touch/{id}', 'User\GetInTouchControlle
 $router->add('POST', '/u/{user_seo}/get-in-touch/{id}', 'User\GetInTouchController@EDIT', ['auth']);
 
 $router->add('GET', '/u/{user_seo}/lab-news', 'User\NewsController@listNews', ['auth']);
+
+$router->add('GET', '/u/{user_seo}/measurement', 'User\MeasurementController@listProject', ['auth']);
+$router->add('POST', '/u/{user_seo}/measurement', 'User\MeasurementController@deleteProject', ['auth']);
+$router->add('GET', '/u/{user_seo}/measurement/create', 'User\MeasurementController@detailProject', ['auth']);
+$router->add('POST', '/u/{user_seo}/measurement/create', 'User\MeasurementController@AddProject', ['auth']);
+$router->add('GET', '/u/{user_seo}/measurement/edit/{id}', 'User\MeasurementController@editProject', ['auth']);
+$router->add('POST', '/u/{user_seo}/measurement/edit/{id}', 'User\MeasurementController@updateProject', ['auth']);
